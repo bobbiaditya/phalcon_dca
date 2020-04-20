@@ -1,2 +1,8 @@
 <?php
-    echo 'hai';
+    $db = $this->getDI()->get('db');
+
+    $sql = "SELECT * from pabrik";
+
+    $result = $db->fetchOne($sql, \Phalcon\Db\Enum::FETCH_ASSOC);
+
+    echo var_dump($result);
