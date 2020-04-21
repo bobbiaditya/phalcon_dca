@@ -8,7 +8,9 @@ class SessionController extends ControllerBase
 
     public function indexAction()
     {
-
+        // $this->session->destroy();
+        $message=$this->session->exists();
+        $this->view->message = $message;
     }
 
     public function hasilAction()
@@ -30,14 +32,14 @@ class SessionController extends ControllerBase
             $this->view->disable();
         }
 
+        echo var_dump($this->session->exists());
         $this->view->message = $message;
     }
 
     public function logoutAction()
     {
         $this->session->destroy();
-        
-        $this->response->redirect('/session');
+        // $this->response->redirect('/session');
 
     }
 
