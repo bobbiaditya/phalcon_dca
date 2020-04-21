@@ -25,7 +25,6 @@ class SignupController extends ControllerBase
                 'pwd'
             ]
         );
-        // $user->id_user = 3;
         $user->updated_at = date('Y-m-d h:i:sa');
         $user->created_at = date('Y-m-d h:i:sa');
         // Store and check for errors
