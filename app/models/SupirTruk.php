@@ -29,6 +29,16 @@ class SupirTruk extends Model
 
         // Untuk mengeset nama tabel, default : nama class
         $this->setSource('supir_truk');
+
+        $this->belongsTo(
+            'id_pemilik',
+            PemilikTruk::class,
+            'id_pemilik',
+            [
+                'reusable' => true,
+                'alias'    => 'pemilik'
+            ]
+        );
     }
 
     /**
