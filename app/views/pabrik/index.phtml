@@ -1,0 +1,33 @@
+<?php
+
+echo "<h1>Hello!</h1>";
+
+echo $this->tag->linkTo(["/pabrik/tambah", "Tambah", 'class' => 'btn btn-primary']);
+
+if ($pabriks->count() > 0) {
+    ?>
+    <table class="table table-bordered table-hover">
+        <thead class="thead-light">
+        <tr>
+            <th>Nama Pabrik</th>
+            <th>Kode Pabrik</th>
+            <th>Harga Pasir</th>
+        </tr>
+        </thead>
+        <tfoot>
+        <tr>
+            <td colspan="3">Pabrik quantity: <?php echo $pabriks->count(); ?></td>
+        </tr>
+        </tfoot>
+        <tbody>
+        <?php foreach ($pabriks as $pabrik) { ?>
+            <tr>
+                <td><?php echo $pabrik->nama_pabrik; ?></td>
+                <td><?php echo $pabrik->kode_pabrik; ?></td>
+                <td><?php echo $pabrik->harga_pasir; ?></td>
+            </tr>
+        <?php } ?>
+        </tbody>
+    </table>
+    <?php
+}

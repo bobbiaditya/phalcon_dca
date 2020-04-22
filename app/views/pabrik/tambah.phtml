@@ -1,0 +1,23 @@
+<h2>Tambah data</h2>
+
+<?php echo $this->tag->form("pabrik/proses"); ?>
+
+    <p>
+        <label for="nama_pabrik">Nama Pabrik</label>
+        <?php echo $this->tag->textField("nama_pabrik"); ?>
+    </p>
+
+    <p>
+        <label for="kode_pabrik">Kode Pabrik</label>
+        <?php echo $this->tag->textField("kode_pabrik"); ?>
+    </p>
+    <p>
+        <label for="harga_pasir">Harga Pasir</label>
+        <?php echo $this->tag->textField("harga_pasir"); ?>
+    </p>
+
+    <p>
+        <?php echo $this->tag->submitButton("Submit"); ?>
+    </p>
+
+</form>
