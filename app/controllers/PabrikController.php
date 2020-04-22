@@ -37,5 +37,40 @@ class PabrikController extends ControllerBase
 
     }
 
+    public function editAction($id)
+    {
+        $pab = Pabrik::findFirstById_pabrik($id);
+        $this->view->pabrik = $pab;       
+    }
+
+    public function updateAction($id)
+    {
+        $pab = Pabrik::findFirstById_pabrik($id);
+
+        $pab->assign(
+            $this->request->getPost(),
+            [
+                'nama_pabrik',
+                'kode_pabrik',
+                'harga_pasir'
+            ]
+        );
+        $pab->updated_at = date('Y-m-d h:i:sa');
+        
+
+        $success = $pab->save();
+
+        $this->response->redirect('/pabrik');
+    }
+
+    public function hapusAction($id)
+    {
+        $pab = Pabrik::findFirstById_pabrik($id);
+
+        $success = $pab->delete();
+
+        $this->response->redirect('/pabrik');
+    }
+
 }
 
