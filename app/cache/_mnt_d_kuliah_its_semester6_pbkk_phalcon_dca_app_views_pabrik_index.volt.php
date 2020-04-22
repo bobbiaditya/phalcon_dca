@@ -3,31 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pemilik Truk</title>
+    <title>Pabrik</title>
 </head>
 <body>
 <div class="container">
     <div class="card">
         <div class="card-header text-center" style="background-color:#343A40; color: #FFFFFF;">
-            <strong>Pemilik Truk</strong>
+            <strong>PABRIK</strong>
         </div>
         <div class="card-header">
-            <a href="/pemiliktruk/tambah" class="btn btn-primary btn-sm float-left"><span class="fas fa-plus" style="padding-right: 7px;"></span>Input</a>
+            <a href="<?= $this->url->get('pabrik/tambah') ?>" class="btn btn-primary btn-sm float-left"><span class="fas fa-plus" style="padding-right: 7px;"></span>Input</a>
         </div>
         <div class="card-body table-responsive p-0" style="height: 500px;">
             <table class="table table-bordered table-hover table-striped table-head-fixed">
                 <thead>
                     <tr>
-                        <th>Nama Pemilik Truk</th>
+                        <th>Nama Pabrik</th>
+                        <th>Kode Pabrik</th>
+                        <th>Harga Pasir</th>
                         <th>OPSI</th>
                     </tr>
                 </thead>
                 <tbody>
-                <?php foreach ($pemilik as $p) { ?>
+                <?php foreach ($pabriks as $p) { ?>
                     <tr>
-                        <td><?php echo $p->nama_pemilik; ?></td>
-                        <td><?php echo $this->tag->linkTo(["/pemiliktruk/edit/$p->id_pemilik", "Edit", 'class' => 'btn btn-warning btn-sm']); ?>
-                            <?php echo $this->tag->linkTo(["/pemiliktruk/hapus/$p->id_pemilik", "Hapus", 'class' => '"btn btn-danger btn-sm']); ?>
+                        <td><?= $p->nama_pabrik ?></td>
+                        <td><?= $p->kode_pabrik ?></td>
+                        <td><?= $p->harga_pasir ?></td>
+                        <td>
+                            <a href="<?= $this->url->get('pabrik/edit/' . $p->id_pabrik) ?>" class="btn btn-warning btn-sm">Edit</a>
+                            <a href="<?= $this->url->get('pabrik/hapus/' . $p->id_pabrik) ?>" class="btn btn-danger btn-sm">Hapus</a>
                         </td>
                     </tr>
                     <?php } ?>

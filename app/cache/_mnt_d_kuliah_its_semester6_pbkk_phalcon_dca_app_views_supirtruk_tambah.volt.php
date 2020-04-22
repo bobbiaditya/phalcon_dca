@@ -6,27 +6,17 @@
         </div>
         <div class="card-header">
 
-            <a href="/supirtruk" class="btn btn-secondary">Kembali</a>
+            <a href="<?= $this->url->get('supirtruk') ?>" class="btn btn-secondary">Kembali</a>
         </div>
         <div class="card-body">
-<!-- 
-            @if ($errors->any())
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                    <li> {{$error}} </li>
-                    @endforeach
-                </ul>
-            </div>
-            @endif -->
-            <form method="post" action="/supirtruk/proses">
+            <form method="post" action="<?= $this->url->get('supirtruk/proses') ?>">
                 <div class="form-group">
                     <label>Nama Pemilik</label>
                     <select class="form-control" id="id_pemilik" name="id_pemilik">
                         <option value="" disabled selected>Nama Pemilik</option>
                         <?php foreach ($pemilik as $p) { ?>
-                        <option value="<?php echo $p->id_pemilik ?>"><?php echo $p->nama_pemilik ?></option>
-                        <?php } ?>
+                        <option value="<?= $p->id_pemilik ?>"><?= $p->nama_pemilik ?></option>
+                    <?php } ?>
                     </select>
                 </div>
                 <div class="form-group">

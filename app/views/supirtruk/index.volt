@@ -12,7 +12,7 @@
             <strong>Supir Truk</strong>
         </div>
         <div class="card-header">
-            <a href="/supirtruk/tambah" class="btn btn-primary btn-sm float-left"><span class="fas fa-plus" style="padding-right: 7px;"></span>Input</a>
+            <a href="{{url('/supirtruk/tambah')}}" class="btn btn-primary btn-sm float-left"><span class="fas fa-plus" style="padding-right: 7px;"></span>Input</a>
         </div>
         <div class="card-body table-responsive p-0" style="height: 500px;">
             <table class="table table-bordered table-hover table-striped table-head-fixed">
@@ -25,16 +25,17 @@
                     </tr>
                 </thead>
                 <tbody>
-                <?php foreach ($supir as $p) { ?>
+                    {% for p in supir %}
                     <tr>
-                        <td><?php echo $p->nama_supir; ?></td>
-                        <td><?php echo $p->pemilik->nama_pemilik; ?></td>
-                        <td><?php echo $p->nopol; ?></td>
-                        <td><?php echo $this->tag->linkTo(["/supirtruk/edit/$p->id_supir", "Edit", 'class' => 'btn btn-warning btn-sm']); ?>
-                            <?php echo $this->tag->linkTo(["/supirtruk/hapus/$p->id_supir", "Hapus", 'class' => '"btn btn-danger btn-sm']); ?>
+                        <td>{{p.nama_supir}}</td>
+                        <td>{{p.pemilik.nama_pemilik}}</td>
+                        <td>{{p.nopol}}</td>
+                        <td>
+                            <a href="{{url('supirtruk/edit/'~p.id_supir) }}" class="btn btn-warning btn-sm">Edit</a>
+                            <a href="{{url('supirtruk/hapus/'~p.id_supir) }}" class="btn btn-danger btn-sm">Hapus</a>
                         </td>
                     </tr>
-                    <?php } ?>
+                    {% endfor %}
                 </tbody>
             </table>
         </div>

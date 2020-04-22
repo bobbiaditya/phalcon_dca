@@ -5,11 +5,11 @@
             <strong>TAMBAH DATA</strong>
         </div>
         <div class="card-header">
-            <a href="/pabrik" class="btn btn-secondary">Kembali</a>
+            <a href="<?= $this->url->get('/pabrik') ?>" class="btn btn-secondary">Kembali</a>
 
         </div>
         <div class="card-body">
-            <form method="post" action="/pabrik/proses">
+            <form method="post" action="<?= $this->url->get('/pabrik/proses') ?>">
                 <div class="form-group">
                     <label>Nama Pabrik</label>
                     <input type="text" name="nama_pabrik" autocomplete="off" class="form-control" placeholder="Nama pabrik">
