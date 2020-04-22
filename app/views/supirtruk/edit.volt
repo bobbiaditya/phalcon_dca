@@ -11,6 +11,7 @@
         <div class="card-body">
 
             <form autocomplete="off" method="post" action="{{ url('supirtruk/update/' ~ supir.id_supir) }}">
+                {{ flashSession.output() }}
                 <div class="form-group">
                     <label>Nama Pemilik</label>
                     <select class="form-control" id="id_pemilik" name="id_pemilik">

@@ -57,7 +57,6 @@ $di->setShared('view', function () {
             $volt->setOptions([
                 'path' => $config->application->cacheDir,
                 'separator' => '_',
-                'always'    => true,
                 'extension' => '.php'
             ]);
 

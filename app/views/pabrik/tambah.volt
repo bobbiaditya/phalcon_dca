@@ -6,7 +6,7 @@
         </div>
         <div class="card-header">
             <a href="{{url('/pabrik')}}" class="btn btn-secondary">Kembali</a>
-
+   
         </div>
         <div class="card-body">
             <form method="post" action="{{url('/pabrik/proses')}}">

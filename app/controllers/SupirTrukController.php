@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace App\Controllers;
 use App\Models\SupirTruk;
 use App\Models\PemilikTruk;
+use App\Validation\SupirValidation;
 class SupirTrukController extends ControllerBase
 {
 
@@ -19,22 +20,39 @@ class SupirTrukController extends ControllerBase
 
     public function prosesAction()
     {
-        $sup = new SupirTruk();
-
-        $sup->assign(
-            $this->request->getPost(),
-            [
-                'id_pemilik',
-                'nama_supir',
-                'nopol'
-            ]
-        );
-        $sup->updated_at = date('Y-m-d h:i:sa');
-        $sup->created_at = date('Y-m-d h:i:sa');
-
-        $success = $sup->save();
-
-        $this->response->redirect('/supirtruk');
+        $validation = new SupirValidation();
+        $messages = $validation->validate($_POST);
+        if(count($messages))
+        {
+            foreach ($messages as $message)
+            {
+                $this->flashSession->error($message->getMessage());
+            }
+            $this->response->redirect('/supirtruk/tambah');
+        }
+        else
+        {
+            $sup = new SupirTruk();
+    
+            $sup->assign(
+                $this->request->getPost(),
+                [
+                    'id_pemilik',
+                    'nama_supir',
+                    'nopol'
+                ]
+            );
+            $sup->updated_at = date('Y-m-d h:i:sa');
+            $sup->created_at = date('Y-m-d h:i:sa');
+    
+            $success = $sup->save();
+            if($success)
+            {
+                $this->flashSession->error('Input data berhasil');
+            }
+    
+            $this->response->redirect('/supirtruk');
+        }
     }
 
     public function editAction($id)
@@ -53,22 +71,39 @@ class SupirTrukController extends ControllerBase
 
     public function updateAction($id)
     {
-        $sup = SupirTruk::findFirstById_supir($id);
-
-        $sup->assign(
-            $this->request->getPost(),
-            [
-                'id_pemilik',
-                'nama_supir',
-                'nopol'
-            ]
-        );
-        $sup->updated_at = date('Y-m-d h:i:sa');
-        
-
-        $success = $sup->save();
-
-        $this->response->redirect('/supirtruk');
+        $validation = new SupirValidation();
+        $messages = $validation->validate($_POST);
+        if(count($messages))
+        {
+            foreach ($messages as $message)
+            {
+                $this->flashSession->error($message->getMessage());
+            }
+            $this->response->redirect('/supirtruk/tambah');
+        }
+        else
+        {
+            $sup = SupirTruk::findFirstById_supir($id);
+    
+            $sup->assign(
+                $this->request->getPost(),
+                [
+                    'id_pemilik',
+                    'nama_supir',
+                    'nopol'
+                ]
+            );
+            $sup->updated_at = date('Y-m-d h:i:sa');
+            
+    
+            $success = $sup->save();
+            if($success)
+            {
+                $this->flashSession->error('Edit data berhasil');
+            }
+    
+            $this->response->redirect('/supirtruk');
+        }
     }
 
     public function hapusAction($id)
@@ -76,6 +111,10 @@ class SupirTrukController extends ControllerBase
         $sup = SupirTruk::findFirstById_supir($id);
 
         $success = $sup->delete();
+        if($success)
+        {
+            $this->flashSession->error('Delete data berhasil');
+        }
 
         $this->response->redirect('/supirtruk');
     }

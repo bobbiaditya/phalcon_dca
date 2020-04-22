@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace App\Controllers;
 use App\Models\PemilikTruk;
+use App\Validation\PemilikValidation;
 class PemilikTrukController extends ControllerBase
 {
 
@@ -18,20 +19,36 @@ class PemilikTrukController extends ControllerBase
 
     public function prosesAction()
     {
-        $pem = new PemilikTruk();
+        $validation = new PemilikValidation();
+        $messages = $validation->validate($_POST);
+        if(count($messages))
+        {
+            foreach ($messages as $message)
+            {
+                $this->flashSession->error($message->getMessage());
+            }
+            $this->response->redirect('/pemiliktruk/tambah');
+        }
+        else
+        {
+            $pem = new PemilikTruk();
+            $pem->assign(
+                $this->request->getPost(),
+                [
+                    'nama_pemilik',
+                ]
+            );
+            $pem->updated_at = date('Y-m-d h:i:sa');
+            $pem->created_at = date('Y-m-d h:i:sa');
+    
+            $success = $pem->save();
 
-        $pem->assign(
-            $this->request->getPost(),
-            [
-                'nama_pemilik',
-            ]
-        );
-        $pem->updated_at = date('Y-m-d h:i:sa');
-        $pem->created_at = date('Y-m-d h:i:sa');
-
-        $success = $pem->save();
-
-        $this->response->redirect('/pemiliktruk');
+            if($success)
+            {
+                $this->flashSession->error('Input data berhasil');
+            }
+            $this->response->redirect('/pemiliktruk');
+        }
 
     }
 
@@ -43,19 +60,36 @@ class PemilikTrukController extends ControllerBase
 
     public function updateAction($id)
     {
-        $pem = PemilikTruk::findFirstById_pemilik($id);
-
-        $pem->assign(
-            $this->request->getPost(),
-            [
-                'nama_pemilik',
-            ]
-        );
-        $pem->updated_at = date('Y-m-d h:i:sa');
-        
-        $success = $pem->save();
-
-        $this->response->redirect('/pemiliktruk');
+        $validation = new PemilikValidation();
+        $messages = $validation->validate($_POST);
+        if(count($messages))
+        {
+            foreach ($messages as $message)
+            {
+                $this->flashSession->error($message->getMessage());
+            }
+            $this->response->redirect('/pemiliktruk/edit');
+        }
+        else
+        {
+            $pem = PemilikTruk::findFirstById_pemilik($id);
+            $pem->assign(
+                $this->request->getPost(),
+                [
+                    'nama_pemilik',
+                ]
+            );
+            $pem->updated_at = date('Y-m-d h:i:sa');
+            
+            $success = $pem->save();
+            
+            if($success)
+            {
+                $this->flashSession->error('Edit data berhasil');
+            }
+    
+            $this->response->redirect('/pemiliktruk');
+        }
     }
 
     public function hapusAction($id)
@@ -63,7 +97,11 @@ class PemilikTrukController extends ControllerBase
         $pem = PemilikTruk::findFirstById_pemilik($id);
 
         $success = $pem->delete();
-
+        
+        if($success)
+        {
+            $this->flashSession->error('Delete data berhasil');
+        }
         $this->response->redirect('/pemiliktruk');
     }
 }

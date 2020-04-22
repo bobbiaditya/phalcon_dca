@@ -6,10 +6,12 @@
         </div>
         <div class="card-header">
             <a href="<?= $this->url->get('pemiliktruk') ?>" class="btn btn-secondary">Kembali</a>
+            
 
         </div>
         <div class="card-body">
             <form autocomplete="off" method="post" action="<?= $this->url->get('pemiliktruk/update/' . $pemilik->id_pemilik) ?>">
+                <?= $this->flashSession->output() ?>
                 <div class="form-group">
                     <label>Nama Pemilik Truk</label>
                     <input type="text" name="nama_pemilik" class="form-control" placeholder="Nama pabrik" value="<?= $pemilik->nama_pemilik ?>">
