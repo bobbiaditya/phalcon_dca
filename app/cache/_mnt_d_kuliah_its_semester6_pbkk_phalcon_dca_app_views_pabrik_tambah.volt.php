@@ -10,6 +10,7 @@
         </div>
         <div class="card-body">
             <form method="post" action="<?= $this->url->get('/pabrik/proses') ?>">
+                <?= $this->flashSession->output() ?>
                 <div class="form-group">
                     <label>Nama Pabrik</label>
                     <input type="text" name="nama_pabrik" autocomplete="off" class="form-control" placeholder="Nama pabrik">
@@ -21,7 +22,7 @@
 
                 <div class="form-group">
                     <label>Harga pasir</label>
-                    <input type="text" name="harga_pasir" class="form-control" placeholder="Harga Pasir" autocomplete="off">
+                    <input type="number" name="harga_pasir" class="form-control" placeholder="Harga Pasir" autocomplete="off">
                 </div>
 
                 <div class="form-group">

@@ -10,6 +10,7 @@
         </div>
         <div class="card-body">
             <form method="post" action="{{url('/pabrik/proses')}}">
+                {{ flashSession.output() }}
                 <div class="form-group">
                     <label>Nama Pabrik</label>
                     <input type="text" name="nama_pabrik" autocomplete="off" class="form-control" placeholder="Nama pabrik">

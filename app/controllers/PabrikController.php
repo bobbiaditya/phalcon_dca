@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace App\Controllers;
 use App\Models\Pabrik;
-use Phalcon\Url;
+use App\Validation\PabrikValidation;
 class PabrikController extends ControllerBase
 {
 
@@ -19,22 +19,40 @@ class PabrikController extends ControllerBase
 
     public function prosesAction()
     {
-        $pab = new Pabrik();
+        $validation= new PabrikValidation();
+        $messages = $validation->validate($_POST);
+        if(count($messages))
+        {
+            foreach ($messages as $message)
+            {
+                $this->flashSession->error($message->getMessage());
+            }
+            $this->response->redirect('/pabrik/tambah');
+        }
+        else
+        {
+            $pab = new Pabrik();
+            $pab->assign(
+                $this->request->getPost(),
+                [
+                    'nama_pabrik',
+                    'kode_pabrik',
+                    'harga_pasir'
+                ]
+            );
+            $pab->updated_at = date('Y-m-d h:i:sa');
+            $pab->created_at = date('Y-m-d h:i:sa');
+    
+            $success = $pab->save();
 
-        $pab->assign(
-            $this->request->getPost(),
-            [
-                'nama_pabrik',
-                'kode_pabrik',
-                'harga_pasir'
-            ]
-        );
-        $pab->updated_at = date('Y-m-d h:i:sa');
-        $pab->created_at = date('Y-m-d h:i:sa');
+            if($success)
+            {
+                $this->flashSession->error('Input data berhasil');
+            }
+    
+            $this->response->redirect('/pabrik');
+        }
 
-        $success = $pab->save();
-
-        $this->response->redirect('/pabrik');
 
     }
 
@@ -46,22 +64,38 @@ class PabrikController extends ControllerBase
 
     public function updateAction($id)
     {
-        $pab = Pabrik::findFirstById_pabrik($id);
+        $validation= new PabrikValidation();
+        $messages = $validation->validate($_POST);
+        if(count($messages))
+        {
+            foreach ($messages as $message)
+            {
+                $this->flashSession->error($message->getMessage());
+            }
+            $this->response->redirect('/pabrik/tambah');
+        }
+        else
+        {
+            $pab = Pabrik::findFirstById_pabrik($id);
 
-        $pab->assign(
-            $this->request->getPost(),
-            [
-                'nama_pabrik',
-                'kode_pabrik',
-                'harga_pasir'
-            ]
-        );
-        $pab->updated_at = date('Y-m-d h:i:sa');
-        
-
-        $success = $pab->save();
-
-        $this->response->redirect('/pabrik');
+            $pab->assign(
+                $this->request->getPost(),
+                [
+                    'nama_pabrik',
+                    'kode_pabrik',
+                    'harga_pasir'
+                ]
+            );
+            $pab->updated_at = date('Y-m-d h:i:sa');
+            
+    
+            $success = $pab->save();
+            if($success)
+            {
+                $this->flashSession->error('Update data berhasil');
+            }
+            $this->response->redirect('/pabrik');
+        }
     }
 
     public function hapusAction($id)
@@ -69,7 +103,10 @@ class PabrikController extends ControllerBase
         $pab = Pabrik::findFirstById_pabrik($id);
 
         $success = $pab->delete();
-
+        if($success)
+        {
+            $this->flashSession->error('Delete data berhasil');
+        }
         $this->response->redirect('/pabrik');
     }
 
