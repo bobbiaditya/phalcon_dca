@@ -1,4 +1,4 @@
-
+a:3:{i:0;s:3122:"
 <!DOCTYPE html>
 <html>
 
@@ -89,50 +89,12 @@
       </div>
     </aside>
     <div class="content-wrapper">
-      
-    <title>Pabrik</title>
-</head>
-<div class="container">
-    <div class="card">
-        <div class="card-header text-center" style="background-color:#343A40; color: #FFFFFF;">
-            <strong>PABRIK</strong>
-        </div>
-        <div class="card-header">
-            <a href="<?= $this->url->get('pabrik/tambah') ?>" class="btn btn-primary btn-sm float-left"><span class="fas fa-plus" style="padding-right: 7px;"></span>Input</a>
-            <?= $this->flashSession->output() ?>
-        </div>
-        <div class="card-body table-responsive p-0" style="height: 500px;">
-            <table class="table table-bordered table-hover table-striped table-head-fixed">
-                <thead>
-                    <tr>
-                        <th>Nama Pabrik</th>
-                        <th>Kode Pabrik</th>
-                        <th>Harga Pasir</th>
-                        <th>OPSI</th>
-                    </tr>
-                </thead>
-                <tbody>
-                <?php foreach ($pabriks as $p) { ?>
-                    <tr>
-                        <td><?= $p->nama_pabrik ?></td>
-                        <td><?= $p->kode_pabrik ?></td>
-                        <td><?= $p->harga_pasir ?></td>
-                        <td>
-                            <a href="<?= $this->url->get('pabrik/edit/' . $p->id_pabrik) ?>" class="btn btn-warning btn-sm">Edit</a>
-                            <a href="<?= $this->url->get('pabrik/hapus/' . $p->id_pabrik) ?>" class="btn btn-danger btn-sm">Hapus</a>
-                        </td>
-                    </tr>
-                    <?php } ?>
-                </tbody>
-            </table>
-        </div>
-    </div>
-</div>
- 
+      ";s:7:"content";a:1:{i:0;a:4:{s:4:"type";i:357;s:5:"value";s:8:"
+      ";s:4:"file";s:71:"/mnt/d/Kuliah/ITS/Semester6/PBKK/phalcon_dca/app/views/index/index.volt";s:4:"line";i:93;}}i:1;s:94:" 
     </div>
     <!-- jQuery -->
     <?= $this->assets->outputJs() ?>
 
 </body>
 
-</html>
+</html>";}

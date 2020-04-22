@@ -1,11 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% extends 'index/index.volt' %}
+{% block content %}
     <title>Pabrik</title>
 </head>
-<body>
 <div class="container">
     <div class="card">
         <div class="card-header text-center" style="background-color:#343A40; color: #FFFFFF;">
@@ -42,4 +38,4 @@
         </div>
     </div>
 </div>
-</body>
+{%endblock%}
