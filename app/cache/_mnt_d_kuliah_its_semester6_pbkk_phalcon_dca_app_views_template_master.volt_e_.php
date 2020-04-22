@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+a:5:{i:0;s:764:"<!DOCTYPE html>
 <html>
 
 <head>
@@ -20,9 +20,8 @@
         }
     </style>
 </head>
-
-<title>Supir Truk</title>
-
+";s:5:"title";a:1:{i:0;a:4:{s:4:"type";i:357;s:5:"value";s:2:"
+";s:4:"file";s:75:"/mnt/d/Kuliah/ITS/Semester6/PBKK/phalcon_dca/app/views/template/master.volt";s:4:"line";i:24;}}i:1;s:3813:"
 
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed" style="font-size: 21px;">
     <!-- Site wrapper -->
@@ -103,51 +102,8 @@
             </div>
         </aside>
         <div class="content-wrapper">
-            
-
-<div class="container">
-    <div class="card mt-5">
-        <div class="card-header text-center" style="background-color:#343A40; color: #FFFFFF;">
-            <strong>EDIT DATA</strong>
-        </div>
-        <div class="card-header">
-            <a href="<?= $this->url->get('/supirtruk') ?>" class="btn btn-secondary">Kembali</a>
-        </div>
-        <div class="card-body">
-
-            <form autocomplete="off" method="post" action="<?= $this->url->get('supirtruk/update/' . $supir->id_supir) ?>">
-                <?= $this->flashSession->output() ?>
-                <div class="form-group">
-                    <label>Nama Pemilik</label>
-                    <select class="form-control" id="id_pemilik" name="id_pemilik">
-                    <option value="<?= $supir->pemilik->id_pemilik ?>"><?= $supir->pemilik->nama_pemilik ?></option>
-                    <?php foreach ($pemilik as $p) { ?>
-                        <option value="<?= $p->id_pemilik ?>"><?= $p->nama_pemilik ?></option>
-                    <?php } ?>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label>Nama Supir</label>
-                    <input type="text" autocomplete="off" name="nama_supir" class="form-control" placeholder="Nama Supir" value="<?= $supir->nama_supir ?>">
-                </div>
-
-                <div class="form-group">
-                    <label>Nopol</label>
-                    <input type="text" autocomplete="off" name="nopol" class="form-control" placeholder="Nopol" value="<?= $supir->nopol ?>">
-                </div>
-
-
-                <div class="form-group">
-                    <input type="submit" class="btn btn-success" value="Simpan">
-                </div>
-
-
-            </form>
-
-        </div>
-    </div>
-</div>
-
+            ";s:7:"content";a:1:{i:0;a:4:{s:4:"type";i:357;s:5:"value";s:14:"
+            ";s:4:"file";s:75:"/mnt/d/Kuliah/ITS/Semester6/PBKK/phalcon_dca/app/views/template/master.volt";s:4:"line";i:106;}}i:2;s:241:"
         </div>
         <aside class="control-sidebar control-sidebar-dark">
             <!-- Control sidebar content goes here -->
@@ -157,4 +113,4 @@
 
 </body>
 
-</html>
+</html>";}

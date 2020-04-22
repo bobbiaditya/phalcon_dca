@@ -1,4 +1,10 @@
+
+{% extends 'template/master.volt' %}
+{% block title %}
 <title>Pemilik Truk</title>
+{%endblock%}
+{% block content %}
+
 <div class="container">
     <div class="card mt-5">
         <div class="card-header text-center" style="background-color:#343A40; color: #FFFFFF;">
@@ -25,3 +31,4 @@
         </div>
     </div>
 </div>
+{%endblock%}

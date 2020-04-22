@@ -1,11 +1,16 @@
+
+{% extends 'template/master.volt' %}
+{% block title %}
 <title>Supir Truk</title>
+{%endblock%}
+{% block content %}
+
 <div class="container">
     <div class="card mt-5">
         <div class="card-header text-center" style="background-color:#343A40; color: #FFFFFF;">
             <strong>EDIT DATA</strong>
         </div>
         <div class="card-header">
-
             <a href="{{url('/supirtruk')}}" class="btn btn-secondary">Kembali</a>
         </div>
         <div class="card-body">
@@ -42,3 +47,4 @@
         </div>
     </div>
 </div>
+{% endblock %}

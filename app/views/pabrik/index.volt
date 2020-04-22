@@ -1,6 +1,9 @@
-{% extends 'index/index.volt' %}
+{% extends 'template/master.volt' %}
+{% block title %}
+<title>Pabrik</title>
+{%endblock%}
 {% block content %}
-    <title>Pabrik</title>
+    
 </head>
 <div class="container">
     <div class="card">

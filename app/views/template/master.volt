@@ -7,7 +7,7 @@
     <!-- <title>DCA | Dwi Citra Anugerah</title> -->
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <?= $this->assets->outputCss() ?>
+    {{ assets.outputCss() }}
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <!-- Google Font: Source Sans Pro -->
@@ -20,9 +20,8 @@
         }
     </style>
 </head>
-
-<title>Supir Truk</title>
-
+{% block title %}
+{% endblock %}
 
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed" style="font-size: 21px;">
     <!-- Site wrapper -->
@@ -67,7 +66,7 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="<?= $this->url->get('pemiliktruk') ?>" class="nav-link">
+                                    <a href="{{ url('pemiliktruk') }}" class="nav-link">
                                         <!-- <i class="nav-icon fas fa-truck"></i> -->
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>
@@ -76,7 +75,7 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="<?= $this->url->get('supirtruk') ?>" class="nav-link">
+                                    <a href="{{ url('supirtruk') }}" class="nav-link">
                                         <!-- <i class="nav-icon fas fa-user-tie"></i> -->
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>
@@ -85,7 +84,7 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="<?= $this->url->get('pabrik') ?>" class="nav-link">
+                                    <a href="{{ url('pabrik') }}" class="nav-link">
                                         <!-- <i class="nav-icon fas fa-warehouse"></i> -->
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>
@@ -103,57 +102,14 @@
             </div>
         </aside>
         <div class="content-wrapper">
-            
-
-<div class="container">
-    <div class="card mt-5">
-        <div class="card-header text-center" style="background-color:#343A40; color: #FFFFFF;">
-            <strong>EDIT DATA</strong>
-        </div>
-        <div class="card-header">
-            <a href="<?= $this->url->get('/supirtruk') ?>" class="btn btn-secondary">Kembali</a>
-        </div>
-        <div class="card-body">
-
-            <form autocomplete="off" method="post" action="<?= $this->url->get('supirtruk/update/' . $supir->id_supir) ?>">
-                <?= $this->flashSession->output() ?>
-                <div class="form-group">
-                    <label>Nama Pemilik</label>
-                    <select class="form-control" id="id_pemilik" name="id_pemilik">
-                    <option value="<?= $supir->pemilik->id_pemilik ?>"><?= $supir->pemilik->nama_pemilik ?></option>
-                    <?php foreach ($pemilik as $p) { ?>
-                        <option value="<?= $p->id_pemilik ?>"><?= $p->nama_pemilik ?></option>
-                    <?php } ?>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label>Nama Supir</label>
-                    <input type="text" autocomplete="off" name="nama_supir" class="form-control" placeholder="Nama Supir" value="<?= $supir->nama_supir ?>">
-                </div>
-
-                <div class="form-group">
-                    <label>Nopol</label>
-                    <input type="text" autocomplete="off" name="nopol" class="form-control" placeholder="Nopol" value="<?= $supir->nopol ?>">
-                </div>
-
-
-                <div class="form-group">
-                    <input type="submit" class="btn btn-success" value="Simpan">
-                </div>
-
-
-            </form>
-
-        </div>
-    </div>
-</div>
-
+            {% block content %}
+            {% endblock %}
         </div>
         <aside class="control-sidebar control-sidebar-dark">
             <!-- Control sidebar content goes here -->
         </aside>
         <!-- jQuery -->
-        <?= $this->assets->outputJs() ?>
+        {{ assets.outputJs() }}
 
 </body>
 
