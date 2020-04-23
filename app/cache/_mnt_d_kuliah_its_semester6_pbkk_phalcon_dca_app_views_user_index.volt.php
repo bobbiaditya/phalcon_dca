@@ -21,7 +21,7 @@
     </style>
 </head>
 
-<title>Supir Truk</title>
+<title>User</title>
 
 
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed" style="font-size: 21px;">
@@ -38,13 +38,10 @@
             <!-- Right navbar links -->
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
+                    <a href="<?= $this->url->get('user') ?>" class="nav-link">User</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link">login</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link">Register</a>
-                </li>
-                <li class="nav-item">
-
                 </li>
             </ul>
         </nav>
@@ -106,44 +103,36 @@
             
 
 <div class="container">
-    <div class="card mt-5">
+    <div class="card">
         <div class="card-header text-center" style="background-color:#343A40; color: #FFFFFF;">
-            <strong>EDIT DATA</strong>
+            <strong>List User</strong>
         </div>
         <div class="card-header">
-            <a href="<?= $this->url->get('/supirtruk') ?>" class="btn btn-secondary">Kembali</a>
+            <a href="<?= $this->url->get('/user/tambah') ?>" class="btn btn-primary btn-sm float-left"><span class="fas fa-plus" style="padding-right: 7px;"></span>Input</a>
+            <?= $this->flashSession->output() ?>
         </div>
-        <div class="card-body">
-
-            <form autocomplete="off" method="post" action="<?= $this->url->get('supirtruk/update/' . $supir->id_supir) ?>">
-                <?= $this->flashSession->output() ?>
-                <div class="form-group">
-                    <label>Nama Pemilik</label>
-                    <select class="form-control" id="id_pemilik" name="id_pemilik">
-                    <option value="<?= $supir->pemilik->id_pemilik ?>"><?= $supir->pemilik->nama_pemilik ?></option>
-                    <?php foreach ($pemilik as $p) { ?>
-                        <option value="<?= $p->id_pemilik ?>"><?= $p->nama_pemilik ?></option>
+        <div class="card-body table-responsive p-0" style="height: 500px;">
+            <table class="table table-bordered table-hover table-striped table-head-fixed">
+                <thead>
+                    <tr>
+                        <th>Nama User</th>
+                        <th>Tipe User</th>
+                        <th>OPSI</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($users as $p) { ?>
+                    <tr>
+                        <td><?= $p->username ?></td>
+                        <td><?= $p->tipe ?></td>
+                        <td>
+                            <a href="<?= $this->url->get('user/edit/' . $p->id_user) ?>" class="btn btn-warning btn-sm">Edit</a>
+                            <a href="<?= $this->url->get('user/hapus/' . $p->id_user) ?>" class="btn btn-danger btn-sm">Hapus</a>
+                        </td>
+                    </tr>
                     <?php } ?>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label>Nama Supir</label>
-                    <input type="text" autocomplete="off" name="nama_supir" class="form-control" placeholder="Nama Supir" value="<?= $supir->nama_supir ?>">
-                </div>
-
-                <div class="form-group">
-                    <label>Nopol</label>
-                    <input type="text" autocomplete="off" name="nopol" class="form-control" placeholder="Nopol" value="<?= $supir->nopol ?>">
-                </div>
-
-
-                <div class="form-group">
-                    <input type="submit" class="btn btn-success" value="Simpan">
-                </div>
-
-
-            </form>
-
+                </tbody>
+            </table>
         </div>
     </div>
 </div>

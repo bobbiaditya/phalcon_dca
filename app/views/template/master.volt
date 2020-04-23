@@ -37,13 +37,10 @@
             <!-- Right navbar links -->
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
+                    <a href="{{ url('user') }}" class="nav-link">User</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link">login</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link">Register</a>
-                </li>
-                <li class="nav-item">
-
                 </li>
             </ul>
         </nav>

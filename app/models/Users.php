@@ -9,6 +9,7 @@ class Users extends Model
     public $id_user;
     public $username;
     public $pwd;
+    public $tipe;
     public $updated_at;
     public $created_at;
 
