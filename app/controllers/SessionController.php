@@ -8,38 +8,60 @@ class SessionController extends ControllerBase
 
     public function indexAction()
     {
-        // $this->session->destroy();
-        $message=$this->session->exists();
-        $this->view->message = $message;
+
     }
 
-    public function hasilAction()
+    public function loginAction()
     {
-        $user_cek=$this->request->getPost();
+        $username = $this->request->getPost('username', 'string');
+        $pwd = $this->request->getPost('pwd', 'string');
+        $user = Users::findFirst(
+            [
+                'conditions' => 'username = :username:',
+                'bind'       => [
+                    'username' => $username,
+                ],
+            ]
+        );
+        if($user)
+        {
+            // Check user's password
+            $check = $this
+                ->security
+                ->checkHash($pwd, $user->pwd);
+                if($check === true)
+                {
+                    
+                    // Set a session
+                    $this->session->set(
+                        'auth',
+                        [
+                            'id_user' => $user->id_user,
+                            'username' => $user->username,
+                            'pwd' => $user->pwd,
+                            'tipe' => $user->tipe,
+                            'status' => '1',
+                        ]
+                    );
+                    $this->response->redirect('/pabrik');
 
-        $find=Users::findByusername($user_cek['username']);
-
-        $message='';
-        if($find[0]->pwd==$user_cek['pwd']){
-            $this->getDI()->getShared("session");
-            // $this->session->set('user-name', $find[0]->username);
-            $this->session->name = $find[0]->username;
-            $message=$this->session->name;
-            // echo 'bisa';
-        }
-        else{
-            echo('wrong passwod');
-            $this->view->disable();
-        }
-
-        echo var_dump($this->session->exists());
-        $this->view->message = $message;
+                }
+                else{
+                    $this->flashSession->error('Password Salah');
+                    $this->response->redirect('/');
+                }
+            }
+            else
+            {
+                $this->flashSession->error('Email Salah');
+                $this->response->redirect('/');
+            }
     }
 
     public function logoutAction()
     {
         $this->session->destroy();
-        // $this->response->redirect('/session');
+        $this->response->redirect('/');
 
     }
 

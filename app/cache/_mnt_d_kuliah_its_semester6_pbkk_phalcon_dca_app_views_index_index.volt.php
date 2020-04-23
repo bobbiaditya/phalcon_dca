@@ -6,13 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>DCA | Dwi Citra Anugerah</title>
-    {{ assets.outputCss() }}
+    <?= $this->assets->outputCss() ?>
 </head>
 
 <body>
     <div>
-        <form method="post" action="{{url('session/login')}}">
-            {{ flashSession.output() }}
+        <form method="post" action="<?= $this->url->get('session/login') ?>">
+            <?= $this->flashSession->output() ?>
             <div class="form-group">
                 <label>Username</label>
                 <input type="text" name="username" autocomplete="off" class="form-control" placeholder="Username">

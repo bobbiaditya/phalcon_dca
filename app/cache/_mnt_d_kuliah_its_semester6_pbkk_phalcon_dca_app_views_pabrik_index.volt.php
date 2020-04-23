@@ -21,7 +21,7 @@
     </style>
 </head>
 
-<title>User</title>
+<title>Pabrik</title>
 
 
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed" style="font-size: 21px;">
@@ -41,7 +41,7 @@
                     <a href="<?= $this->url->get('user') ?>" class="nav-link">User</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link">login</a>
+                    <a  href="<?= $this->url->get('session/logout') ?>" class="nav-link">Logout</a>
                 </li>
             </ul>
         </nav>
@@ -101,33 +101,36 @@
         </aside>
         <div class="content-wrapper">
             
-
+    
+</head>
 <div class="container">
     <div class="card">
         <div class="card-header text-center" style="background-color:#343A40; color: #FFFFFF;">
-            <strong>List User</strong>
+            <strong>PABRIK</strong>
         </div>
         <div class="card-header">
-            <a href="<?= $this->url->get('/user/tambah') ?>" class="btn btn-primary btn-sm float-left"><span class="fas fa-plus" style="padding-right: 7px;"></span>Input</a>
+            <a href="<?= $this->url->get('pabrik/tambah') ?>" class="btn btn-primary btn-sm float-left"><span class="fas fa-plus" style="padding-right: 7px;"></span>Input</a>
             <?= $this->flashSession->output() ?>
         </div>
         <div class="card-body table-responsive p-0" style="height: 500px;">
             <table class="table table-bordered table-hover table-striped table-head-fixed">
                 <thead>
                     <tr>
-                        <th>Nama User</th>
-                        <th>Tipe User</th>
+                        <th>Nama Pabrik</th>
+                        <th>Kode Pabrik</th>
+                        <th>Harga Pasir</th>
                         <th>OPSI</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ($users as $p) { ?>
+                <?php foreach ($pabriks as $p) { ?>
                     <tr>
-                        <td><?= $p->username ?></td>
-                        <td><?= $p->tipe ?></td>
+                        <td><?= $p->nama_pabrik ?></td>
+                        <td><?= $p->kode_pabrik ?></td>
+                        <td><?= $p->harga_pasir ?></td>
                         <td>
-                            <a href="<?= $this->url->get('user/edit/' . $p->id_user) ?>" class="btn btn-warning btn-sm">Edit</a>
-                            <a href="<?= $this->url->get('user/hapus/' . $p->id_user) ?>" class="btn btn-danger btn-sm">Hapus</a>
+                            <a href="<?= $this->url->get('pabrik/edit/' . $p->id_pabrik) ?>" class="btn btn-warning btn-sm">Edit</a>
+                            <a href="<?= $this->url->get('pabrik/hapus/' . $p->id_pabrik) ?>" class="btn btn-danger btn-sm">Hapus</a>
                         </td>
                     </tr>
                     <?php } ?>

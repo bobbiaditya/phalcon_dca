@@ -40,7 +40,7 @@
                     <a href="{{ url('user') }}" class="nav-link">User</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link">login</a>
+                    <a  href="{{ url('session/logout') }}" class="nav-link">Logout</a>
                 </li>
             </ul>
         </nav>

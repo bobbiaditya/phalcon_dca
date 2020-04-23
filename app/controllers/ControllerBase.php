@@ -23,6 +23,23 @@ class ControllerBase extends Controller
         $this->assets->addJs("dist/js/demo.js");
         $this->assets->addJs("bootstrap-colorpicker/js/bootstrap-colorpicker.min.js");
 
-
+        // if($this->session->get('auth'))
+        // {
+        //     $ses = $this->session->get('auth');
+        //     if($ses->auth->tipe=='master')
+        //     {
+        //         $this->view->pick('pabrik/index');
+        //     }
+        //     else
+        //     {
+        //         $this->view->pick('index/temp');
+        //         echo $ses;
+        //     }
+        //     // $this->view->pick('pabrik/index');
+        // }
+        // else
+        // {
+        //     $this->view->pick('index/index');
+        // }
     }
 }
