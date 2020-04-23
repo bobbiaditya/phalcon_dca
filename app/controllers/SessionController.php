@@ -53,7 +53,7 @@ class SessionController extends ControllerBase
             }
             else
             {
-                $this->flashSession->error('Email Salah');
+                $this->flashSession->error('Username Salah');
                 $this->response->redirect('/');
             }
     }
