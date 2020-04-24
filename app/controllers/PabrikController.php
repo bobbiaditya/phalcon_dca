@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace App\Controllers;
 use App\Models\Pabrik;
 use App\Validation\PabrikValidation;
+date_default_timezone_set("Asia/Bangkok");
 class PabrikController extends ControllerBase
 {
 

@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace App\Controllers;
 use App\Models\PemilikTruk;
 use App\Validation\PemilikValidation;
+date_default_timezone_set("Asia/Bangkok");
 class PemilikTrukController extends ControllerBase
 {
 

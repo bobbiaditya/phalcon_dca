@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Models\SupirTruk;
 use App\Models\PemilikTruk;
 use App\Validation\SupirValidation;
+date_default_timezone_set("Asia/Bangkok");
 class SupirTrukController extends ControllerBase
 {
 
