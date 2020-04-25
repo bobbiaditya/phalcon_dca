@@ -58,8 +58,8 @@ $di->setShared('view', function () {
                 'path' => $config->application->cacheDir,
                 'separator' => '_',
                 'extension' => '.php',
-                'always' => true,
-                'stat' => 'true'
+                // 'always' => true,
+                // 'stat' => 'true'
             ]);
 
             return $volt;
