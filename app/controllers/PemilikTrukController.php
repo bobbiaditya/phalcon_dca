@@ -54,7 +54,7 @@ class PemilikTrukController extends ControllerBase
     
                 if($success)
                 {
-                    $this->flashSession->error('Input data berhasil');
+                    $this->flashSession->success('Input data berhasil');
                 }
                 $this->response->redirect('/pemiliktruk');
             }
@@ -106,7 +106,7 @@ class PemilikTrukController extends ControllerBase
                 
                 if($success)
                 {
-                    $this->flashSession->error('Edit data berhasil');
+                    $this->flashSession->success('Edit data berhasil');
                 }
         
                 $this->response->redirect('/pemiliktruk');
@@ -122,7 +122,7 @@ class PemilikTrukController extends ControllerBase
         
         if($success)
         {
-            $this->flashSession->error('Delete data berhasil');
+            $this->flashSession->success('Delete data berhasil');
         }
         $this->response->redirect('/pemiliktruk');
     }

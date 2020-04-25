@@ -55,7 +55,7 @@ class UserController extends ControllerBase
         
                 if($success)
                 {
-                    $this->flashSession->error('Input data berhasil');
+                    $this->flashSession->success('Input data berhasil');
                 }
                 // passing a message to the view
                 $this->response->redirect('/user');

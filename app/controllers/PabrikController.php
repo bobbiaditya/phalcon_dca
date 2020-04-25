@@ -63,7 +63,7 @@ class PabrikController extends ControllerBase
     
                 if($success)
                 {
-                    $this->flashSession->error('Input data berhasil');
+                    $this->flashSession->success('Input data berhasil');
                 }
         
                 $this->response->redirect('/pabrik');
@@ -127,7 +127,7 @@ class PabrikController extends ControllerBase
                 $success = $pab->save();
                 if($success)
                 {
-                    $this->flashSession->error('Update data berhasil');
+                    $this->flashSession->success('Update data berhasil');
                 }
                 $this->response->redirect('/pabrik');
             }
@@ -142,7 +142,7 @@ class PabrikController extends ControllerBase
         $success = $pab->delete();
         if($success)
         {
-            $this->flashSession->error('Delete data berhasil');
+            $this->flashSession->success('Delete data berhasil');
         }
         $this->response->redirect('/pabrik');
     }
