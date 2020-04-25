@@ -9,12 +9,13 @@
             <strong>TAMBAH DATA</strong>
         </div>
         <div class="card-header">
-
             <a href="{{url('supirtruk')}}" class="btn btn-secondary">Kembali</a>
+        </div>
+        <div class="card-header text-danger text-center">
+            {{ flashSession.output() }}
         </div>
         <div class="card-body">
             <form method="post" action="{{url('supirtruk/proses')}}">
-                {{ flashSession.output() }}
                 <div class="form-group">
                     <label>Nama Pemilik</label>
                     <select class="form-control" id="id_pemilik" name="id_pemilik">

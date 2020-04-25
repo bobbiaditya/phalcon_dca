@@ -8,9 +8,11 @@
         <div class="card-header text-center" style="background-color:#343A40; color: #FFFFFF;">
             <strong>Tambah User Baru</strong>
         </div>
+        <div class="card-header text-danger text-center">
+            {{ flashSession.output() }}
+        </div>
         <div class="card-body">
             <form method="post" action="{{url('/user/register')}}">
-                {{ flashSession.output() }}
                 <div class="form-group">
                     <label>Username</label>
                     <input type="text" name="username" autocomplete="off" class="form-control" placeholder="Username">

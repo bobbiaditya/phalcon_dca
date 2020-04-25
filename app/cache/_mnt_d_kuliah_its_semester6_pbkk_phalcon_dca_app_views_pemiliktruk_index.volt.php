@@ -38,7 +38,7 @@
             <!-- Right navbar links -->
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a href="<?= $this->url->get('user') ?>" class="nav-link">User</a>
+                    <a href="<?= $this->url->get('user') ?>" class="nav-link"><?= $this->session->get('auth')['username'] ?></a>
                 </li>
                 <li class="nav-item">
                     <a  href="<?= $this->url->get('session/logout') ?>" class="nav-link">Logout</a>
@@ -90,7 +90,15 @@
                                         </p>
                                     </a>
                                 </li>
-
+                                <li class="nav-item">
+                                    <a href="<?= $this->url->get('user') ?>" class="nav-link">
+                                        <!-- <i class="nav-icon fas fa-warehouse"></i> -->
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>
+                                            User
+                                        </p>
+                                    </a>
+                                </li>
                             </ul>
                         </li>
                         
@@ -109,7 +117,10 @@
             <strong>Pemilik Truk</strong>
         </div>
         <div class="card-header">
-            <a href="<?= $this->url->get('/pemiliktruk/tambah') ?>" class="btn btn-primary btn-sm float-left"><span class="fas fa-plus" style="padding-right: 7px;"></span>Input</a>
+            <a href="<?= $this->url->get('/pemiliktruk/tambah') ?>" class="btn btn-primary btn-sm float-left"><span class="fas fa-plus"
+                    style="padding-right: 7px;"></span>Input</a>
+        </div>
+        <div class="card-header text-success text-center">
             <?= $this->flashSession->output() ?>
         </div>
         <div class="card-body table-responsive p-0" style="height: 500px;">
@@ -126,7 +137,8 @@
                         <td><?= $p->nama_pemilik ?></td>
                         <td>
                             <a href="<?= $this->url->get('pemiliktruk/edit/' . $p->id_pemilik) ?>" class="btn btn-warning btn-sm">Edit</a>
-                            <a href="<?= $this->url->get('pemiliktruk/hapus/' . $p->id_pemilik) ?>" class="btn btn-danger btn-sm">Hapus</a>
+                            <a href="<?= $this->url->get('pemiliktruk/hapus/' . $p->id_pemilik) ?>"
+                                class="btn btn-danger btn-sm">Hapus</a>
                         </td>
                     </tr>
                     <?php } ?>

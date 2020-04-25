@@ -1,4 +1,3 @@
-
 {% extends 'template/master.volt' %}
 {% block title %}
 <title>Pemilik Truk</title>
@@ -11,7 +10,10 @@
             <strong>Pemilik Truk</strong>
         </div>
         <div class="card-header">
-            <a href="{{url('/pemiliktruk/tambah')}}" class="btn btn-primary btn-sm float-left"><span class="fas fa-plus" style="padding-right: 7px;"></span>Input</a>
+            <a href="{{url('/pemiliktruk/tambah')}}" class="btn btn-primary btn-sm float-left"><span class="fas fa-plus"
+                    style="padding-right: 7px;"></span>Input</a>
+        </div>
+        <div class="card-header text-success text-center">
             {{ flashSession.output() }}
         </div>
         <div class="card-body table-responsive p-0" style="height: 500px;">
@@ -28,7 +30,8 @@
                         <td>{{ p.nama_pemilik }}</td>
                         <td>
                             <a href="{{url('pemiliktruk/edit/'~p.id_pemilik) }}" class="btn btn-warning btn-sm">Edit</a>
-                            <a href="{{url('pemiliktruk/hapus/'~p.id_pemilik) }}" class="btn btn-danger btn-sm">Hapus</a>
+                            <a href="{{url('pemiliktruk/hapus/'~p.id_pemilik) }}"
+                                class="btn btn-danger btn-sm">Hapus</a>
                         </td>
                     </tr>
                     {% endfor %}

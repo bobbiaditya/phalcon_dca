@@ -110,7 +110,7 @@
         </aside>
         <div class="content-wrapper">
             
-    
+
 </head>
 <div class="container">
     <div class="card">
@@ -118,7 +118,10 @@
             <strong>PABRIK</strong>
         </div>
         <div class="card-header">
-            <a href="<?= $this->url->get('pabrik/tambah') ?>" class="btn btn-primary btn-sm float-left"><span class="fas fa-plus" style="padding-right: 7px;"></span>Input</a>
+            <a href="<?= $this->url->get('pabrik/tambah') ?>" class="btn btn-primary btn-sm float-left"><span class="fas fa-plus"
+                    style="padding-right: 7px;"></span>Input</a>
+        </div>
+        <div class="card-header text-success text-center">
             <?= $this->flashSession->output() ?>
         </div>
         <div class="card-body table-responsive p-0" style="height: 500px;">
@@ -132,7 +135,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                <?php foreach ($pabriks as $p) { ?>
+                    <?php foreach ($pabriks as $p) { ?>
                     <tr>
                         <td><?= $p->nama_pabrik ?></td>
                         <td><?= $p->kode_pabrik ?></td>

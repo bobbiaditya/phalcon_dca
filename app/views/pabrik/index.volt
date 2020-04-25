@@ -3,7 +3,7 @@
 <title>Pabrik</title>
 {%endblock%}
 {% block content %}
-    
+
 </head>
 <div class="container">
     <div class="card">
@@ -11,7 +11,10 @@
             <strong>PABRIK</strong>
         </div>
         <div class="card-header">
-            <a href="{{ url('pabrik/tambah') }}" class="btn btn-primary btn-sm float-left"><span class="fas fa-plus" style="padding-right: 7px;"></span>Input</a>
+            <a href="{{ url('pabrik/tambah') }}" class="btn btn-primary btn-sm float-left"><span class="fas fa-plus"
+                    style="padding-right: 7px;"></span>Input</a>
+        </div>
+        <div class="card-header text-success text-center">
             {{ flashSession.output() }}
         </div>
         <div class="card-body table-responsive p-0" style="height: 500px;">
@@ -25,7 +28,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                {% for p in pabriks %}
+                    {% for p in pabriks %}
                     <tr>
                         <td>{{ p.nama_pabrik }}</td>
                         <td>{{ p.kode_pabrik }}</td>

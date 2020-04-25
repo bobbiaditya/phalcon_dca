@@ -9,9 +9,11 @@
         <div class="card-header text-center" style="background-color:#343A40; color: #FFFFFF;">
             <strong>List User</strong>
         </div>
+        <div class="card-header text-success text-center">
+            {{ flashSession.output() }}
+        </div>
         <div class="card-header">
             <a href="{{url('/user/tambah')}}" class="btn btn-primary btn-sm float-left"><span class="fas fa-plus" style="padding-right: 7px;"></span>Input</a>
-            {{ flashSession.output() }}
         </div>
         <div class="card-body table-responsive p-0" style="height: 500px;">
             <table class="table table-bordered table-hover table-striped table-head-fixed">

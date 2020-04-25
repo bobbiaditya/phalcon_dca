@@ -38,7 +38,7 @@
             <!-- Right navbar links -->
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a href="<?= $this->url->get('user') ?>" class="nav-link">User</a>
+                    <a href="<?= $this->url->get('user') ?>" class="nav-link"><?= $this->session->get('auth')['username'] ?></a>
                 </li>
                 <li class="nav-item">
                     <a  href="<?= $this->url->get('session/logout') ?>" class="nav-link">Logout</a>
@@ -90,7 +90,15 @@
                                         </p>
                                     </a>
                                 </li>
-
+                                <li class="nav-item">
+                                    <a href="<?= $this->url->get('user') ?>" class="nav-link">
+                                        <!-- <i class="nav-icon fas fa-warehouse"></i> -->
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>
+                                            User
+                                        </p>
+                                    </a>
+                                </li>
                             </ul>
                         </li>
                         
@@ -108,12 +116,13 @@
             <strong>TAMBAH DATA</strong>
         </div>
         <div class="card-header">
-
             <a href="<?= $this->url->get('supirtruk') ?>" class="btn btn-secondary">Kembali</a>
+        </div>
+        <div class="card-header text-danger text-center">
+            <?= $this->flashSession->output() ?>
         </div>
         <div class="card-body">
             <form method="post" action="<?= $this->url->get('supirtruk/proses') ?>">
-                <?= $this->flashSession->output() ?>
                 <div class="form-group">
                     <label>Nama Pemilik</label>
                     <select class="form-control" id="id_pemilik" name="id_pemilik">

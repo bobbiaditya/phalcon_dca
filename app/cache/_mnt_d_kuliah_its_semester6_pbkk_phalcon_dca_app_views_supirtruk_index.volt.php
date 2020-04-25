@@ -38,7 +38,7 @@
             <!-- Right navbar links -->
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a href="<?= $this->url->get('user') ?>" class="nav-link">User</a>
+                    <a href="<?= $this->url->get('user') ?>" class="nav-link"><?= $this->session->get('auth')['username'] ?></a>
                 </li>
                 <li class="nav-item">
                     <a  href="<?= $this->url->get('session/logout') ?>" class="nav-link">Logout</a>
@@ -90,7 +90,15 @@
                                         </p>
                                     </a>
                                 </li>
-
+                                <li class="nav-item">
+                                    <a href="<?= $this->url->get('user') ?>" class="nav-link">
+                                        <!-- <i class="nav-icon fas fa-warehouse"></i> -->
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>
+                                            User
+                                        </p>
+                                    </a>
+                                </li>
                             </ul>
                         </li>
                         
@@ -110,6 +118,8 @@
         </div>
         <div class="card-header">
             <a href="<?= $this->url->get('/supirtruk/tambah') ?>" class="btn btn-primary btn-sm float-left"><span class="fas fa-plus" style="padding-right: 7px;"></span>Input</a>
+        </div>
+        <div class="card-header text-success text-center">
             <?= $this->flashSession->output() ?>
         </div>
         <div class="card-body table-responsive p-0" style="height: 500px;">

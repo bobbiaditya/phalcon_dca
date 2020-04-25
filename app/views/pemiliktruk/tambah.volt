@@ -10,12 +10,12 @@
         </div>
         <div class="card-header">
             <a href="{{url('/pemiliktruk')}}" class="btn btn-secondary">Kembali</a>
-            
-
+        </div>
+        <div class="card-header text-danger text-center">
+            {{ flashSession.output() }}
         </div>
         <div class="card-body">
             <form method="post" action="{{url('/pemiliktruk/proses')}}">
-                {{ flashSession.output() }}
                 <div class="form-group">
                     <label>Nama Pemilik Truk</label>
                     <input type="text" name="nama_pemilik" autocomplete="off" class="form-control" placeholder="Nama Pemilik Truk">
