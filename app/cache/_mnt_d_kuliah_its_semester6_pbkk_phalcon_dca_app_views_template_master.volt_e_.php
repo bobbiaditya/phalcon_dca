@@ -21,7 +21,7 @@ a:5:{i:0;s:764:"<!DOCTYPE html>
     </style>
 </head>
 ";s:5:"title";a:1:{i:0;a:4:{s:4:"type";i:357;s:5:"value";s:2:"
-";s:4:"file";s:75:"/mnt/d/Kuliah/ITS/Semester6/PBKK/phalcon_dca/app/views/template/master.volt";s:4:"line";i:24;}}i:1;s:3859:"
+";s:4:"file";s:75:"/mnt/d/Kuliah/ITS/Semester6/PBKK/phalcon_dca/app/views/template/master.volt";s:4:"line";i:24;}}i:1;s:4444:"
 
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed" style="font-size: 21px;">
     <!-- Site wrapper -->
@@ -37,7 +37,7 @@ a:5:{i:0;s:764:"<!DOCTYPE html>
             <!-- Right navbar links -->
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a href="<?= $this->url->get('user') ?>" class="nav-link">User</a>
+                    <a href="<?= $this->url->get('user') ?>" class="nav-link"><?= $this->session->get('auth')['username'] ?></a>
                 </li>
                 <li class="nav-item">
                     <a  href="<?= $this->url->get('session/logout') ?>" class="nav-link">Logout</a>
@@ -89,7 +89,15 @@ a:5:{i:0;s:764:"<!DOCTYPE html>
                                         </p>
                                     </a>
                                 </li>
-
+                                <li class="nav-item">
+                                    <a href="<?= $this->url->get('user') ?>" class="nav-link">
+                                        <!-- <i class="nav-icon fas fa-warehouse"></i> -->
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>
+                                            User
+                                        </p>
+                                    </a>
+                                </li>
                             </ul>
                         </li>
                         
@@ -101,7 +109,7 @@ a:5:{i:0;s:764:"<!DOCTYPE html>
         </aside>
         <div class="content-wrapper">
             ";s:7:"content";a:1:{i:0;a:4:{s:4:"type";i:357;s:5:"value";s:14:"
-            ";s:4:"file";s:75:"/mnt/d/Kuliah/ITS/Semester6/PBKK/phalcon_dca/app/views/template/master.volt";s:4:"line";i:104;}}i:2;s:241:"
+            ";s:4:"file";s:75:"/mnt/d/Kuliah/ITS/Semester6/PBKK/phalcon_dca/app/views/template/master.volt";s:4:"line";i:112;}}i:2;s:241:"
         </div>
         <aside class="control-sidebar control-sidebar-dark">
             <!-- Control sidebar content goes here -->

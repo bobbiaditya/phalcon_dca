@@ -7,7 +7,7 @@
     <!-- <title>DCA | Dwi Citra Anugerah</title> -->
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    {{ assets.outputCss() }}
+    <?= $this->assets->outputCss() ?>
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <!-- Google Font: Source Sans Pro -->
@@ -20,8 +20,9 @@
         }
     </style>
 </head>
-{% block title %}
-{% endblock %}
+
+<title>Register</title>
+
 
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed" style="font-size: 21px;">
     <!-- Site wrapper -->
@@ -37,10 +38,10 @@
             <!-- Right navbar links -->
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a href="{{ url('user') }}" class="nav-link">{{ session.get('auth')['username'] }}</a>
+                    <a href="<?= $this->url->get('user') ?>" class="nav-link"><?= $this->session->get('auth')['username'] ?></a>
                 </li>
                 <li class="nav-item">
-                    <a  href="{{ url('session/logout') }}" class="nav-link">Logout</a>
+                    <a  href="<?= $this->url->get('session/logout') ?>" class="nav-link">Logout</a>
                 </li>
             </ul>
         </nav>
@@ -63,7 +64,7 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="{{ url('pemiliktruk') }}" class="nav-link">
+                                    <a href="<?= $this->url->get('pemiliktruk') ?>" class="nav-link">
                                         <!-- <i class="nav-icon fas fa-truck"></i> -->
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>
@@ -72,7 +73,7 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{ url('supirtruk') }}" class="nav-link">
+                                    <a href="<?= $this->url->get('supirtruk') ?>" class="nav-link">
                                         <!-- <i class="nav-icon fas fa-user-tie"></i> -->
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>
@@ -81,7 +82,7 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{ url('pabrik') }}" class="nav-link">
+                                    <a href="<?= $this->url->get('pabrik') ?>" class="nav-link">
                                         <!-- <i class="nav-icon fas fa-warehouse"></i> -->
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>
@@ -90,7 +91,7 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{ url('user') }}" class="nav-link">
+                                    <a href="<?= $this->url->get('user') ?>" class="nav-link">
                                         <!-- <i class="nav-icon fas fa-warehouse"></i> -->
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>
@@ -108,14 +109,48 @@
             </div>
         </aside>
         <div class="content-wrapper">
-            {% block content %}
-            {% endblock %}
+            
+<div class="container">
+    <div class="card mt-5">
+        <div class="card-header text-center" style="background-color:#343A40; color: #FFFFFF;">
+            <strong>Tambah User Baru</strong>
+        </div>
+        <div class="card-body">
+            <form method="post" action="<?= $this->url->get('/user/register') ?>">
+                <?= $this->flashSession->output() ?>
+                <div class="form-group">
+                    <label>Username</label>
+                    <input type="text" name="username" autocomplete="off" class="form-control" placeholder="Username">
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" name="pwd" autocomplete="off" class="form-control" placeholder="Password">
+                </div>
+                <div class="form-group">
+                    <label>Tipe User</label>
+                    <select class="form-control" id="tipe" name="tipe">
+                        <option value="master">Master</option>
+                        <option value="admin">Admin</option>
+                    </select>
+                </div>
+                
+
+                <div class="form-group">
+                    <input type="submit" class="btn btn-success" value="Simpan">
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+</div>
+
         </div>
         <aside class="control-sidebar control-sidebar-dark">
             <!-- Control sidebar content goes here -->
         </aside>
         <!-- jQuery -->
-        {{ assets.outputJs() }}
+        <?= $this->assets->outputJs() ?>
 
 </body>
 

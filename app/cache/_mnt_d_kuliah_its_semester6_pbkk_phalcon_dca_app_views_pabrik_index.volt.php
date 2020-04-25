@@ -38,7 +38,7 @@
             <!-- Right navbar links -->
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a href="<?= $this->url->get('user') ?>" class="nav-link">User</a>
+                    <a href="<?= $this->url->get('user') ?>" class="nav-link"><?= $this->session->get('auth')['username'] ?></a>
                 </li>
                 <li class="nav-item">
                     <a  href="<?= $this->url->get('session/logout') ?>" class="nav-link">Logout</a>
@@ -90,7 +90,15 @@
                                         </p>
                                     </a>
                                 </li>
-
+                                <li class="nav-item">
+                                    <a href="<?= $this->url->get('user') ?>" class="nav-link">
+                                        <!-- <i class="nav-icon fas fa-warehouse"></i> -->
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>
+                                            User
+                                        </p>
+                                    </a>
+                                </li>
                             </ul>
                         </li>
                         
