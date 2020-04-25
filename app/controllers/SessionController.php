@@ -6,6 +6,10 @@ use App\Models\Users;
 class SessionController extends ControllerBase
 {
 
+    public function beforeExecuteRoute() {
+
+    }
+    
     public function indexAction()
     {
 
@@ -41,7 +45,7 @@ class SessionController extends ControllerBase
                             'pwd' => $user->pwd,
                             'tipe' => $user->tipe,
                             'status' => '1',
-                        ]
+                        ]   
                     );
                     $this->response->redirect('/pabrik');
 

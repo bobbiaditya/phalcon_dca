@@ -5,21 +5,12 @@ namespace App\Controllers;
 // use Phalcon\Mvc\Controller;
 class IndexController extends ControllerBase
 {
+    public function beforeExecuteRoute() {
+
+    }
     public function indexAction()
     {
-        // if($this->session->get('auth'))
-        // {
-        //     $ses = $this->session->get('auth');
-        //     if($ses->tipe=='master')
-        //     {
-        //         $this->response->redirect('/pabrik');
-        //     }
-        //     else
-        //     {
-        //         $this->response->redirect('/');
-        //     }
-        //     // $this->response->redirect('/pabrik');
-        // }
+
     }
 
 }

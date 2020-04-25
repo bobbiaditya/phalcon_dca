@@ -1,4 +1,4 @@
-a:5:{i:0;s:764:"<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 
 <head>
@@ -20,8 +20,9 @@ a:5:{i:0;s:764:"<!DOCTYPE html>
         }
     </style>
 </head>
-";s:5:"title";a:1:{i:0;a:4:{s:4:"type";i:357;s:5:"value";s:2:"
-";s:4:"file";s:75:"/mnt/d/Kuliah/ITS/Semester6/PBKK/phalcon_dca/app/views/template/master.volt";s:4:"line";i:24;}}i:1;s:3859:"
+
+<title>Supir Truk</title>
+
 
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed" style="font-size: 21px;">
     <!-- Site wrapper -->
@@ -100,8 +101,45 @@ a:5:{i:0;s:764:"<!DOCTYPE html>
             </div>
         </aside>
         <div class="content-wrapper">
-            ";s:7:"content";a:1:{i:0;a:4:{s:4:"type";i:357;s:5:"value";s:14:"
-            ";s:4:"file";s:75:"/mnt/d/Kuliah/ITS/Semester6/PBKK/phalcon_dca/app/views/template/master.volt";s:4:"line";i:104;}}i:2;s:241:"
+            
+
+<div class="container">
+    <div class="card">
+        <div class="card-header text-center" style="background-color:#343A40; color: #FFFFFF;">
+            <strong>Supir Truk</strong>
+        </div>
+        <div class="card-header">
+            <a href="<?= $this->url->get('/supirtruk/tambah') ?>" class="btn btn-primary btn-sm float-left"><span class="fas fa-plus" style="padding-right: 7px;"></span>Input</a>
+            <?= $this->flashSession->output() ?>
+        </div>
+        <div class="card-body table-responsive p-0" style="height: 500px;">
+            <table class="table table-bordered table-hover table-striped table-head-fixed">
+                <thead>
+                    <tr>
+                        <th>Nama Supir</th>
+                        <th>Pemilik Truk</th>
+                        <th>Nopol</th>
+                        <th>OPSI</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($supir as $p) { ?>
+                    <tr>
+                        <td><?= $p->nama_supir ?></td>
+                        <td><?= $p->pemilik->nama_pemilik ?></td>
+                        <td><?= $p->nopol ?></td>
+                        <td>
+                            <a href="<?= $this->url->get('supirtruk/edit/' . $p->id_supir) ?>" class="btn btn-warning btn-sm">Edit</a>
+                            <a href="<?= $this->url->get('supirtruk/hapus/' . $p->id_supir) ?>" class="btn btn-danger btn-sm">Hapus</a>
+                        </td>
+                    </tr>
+                    <?php } ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
         </div>
         <aside class="control-sidebar control-sidebar-dark">
             <!-- Control sidebar content goes here -->
@@ -111,4 +149,4 @@ a:5:{i:0;s:764:"<!DOCTYPE html>
 
 </body>
 
-</html>";}
+</html>

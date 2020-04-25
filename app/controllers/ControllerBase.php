@@ -22,24 +22,15 @@ class ControllerBase extends Controller
         $this->assets->addJs("plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js");
         $this->assets->addJs("dist/js/demo.js");
         $this->assets->addJs("bootstrap-colorpicker/js/bootstrap-colorpicker.min.js");
+        $this->ses = $this->session->has('auth');
+    }
 
-        // if($this->session->get('auth'))
-        // {
-        //     $ses = $this->session->get('auth');
-        //     if($ses->auth->tipe=='master')
-        //     {
-        //         $this->view->pick('pabrik/index');
-        //     }
-        //     else
-        //     {
-        //         $this->view->pick('index/temp');
-        //         echo $ses;
-        //     }
-        //     // $this->view->pick('pabrik/index');
-        // }
-        // else
-        // {
-        //     $this->view->pick('index/index');
-        // }
+
+    public function beforeExecuteRoute() {
+        if (!$this->ses) {
+            // $this->view->disable();
+            $this->response->redirect('/');
+            return false;
+        }
     }
 }

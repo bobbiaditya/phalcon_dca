@@ -1,4 +1,4 @@
-a:5:{i:0;s:764:"<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 
 <head>
@@ -20,8 +20,9 @@ a:5:{i:0;s:764:"<!DOCTYPE html>
         }
     </style>
 </head>
-";s:5:"title";a:1:{i:0;a:4:{s:4:"type";i:357;s:5:"value";s:2:"
-";s:4:"file";s:75:"/mnt/d/Kuliah/ITS/Semester6/PBKK/phalcon_dca/app/views/template/master.volt";s:4:"line";i:24;}}i:1;s:3859:"
+
+<title>Pabrik</title>
+
 
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed" style="font-size: 21px;">
     <!-- Site wrapper -->
@@ -100,8 +101,43 @@ a:5:{i:0;s:764:"<!DOCTYPE html>
             </div>
         </aside>
         <div class="content-wrapper">
-            ";s:7:"content";a:1:{i:0;a:4:{s:4:"type";i:357;s:5:"value";s:14:"
-            ";s:4:"file";s:75:"/mnt/d/Kuliah/ITS/Semester6/PBKK/phalcon_dca/app/views/template/master.volt";s:4:"line";i:104;}}i:2;s:241:"
+            
+<div class="container">
+    <div class="card mt-5">
+        <div class="card-header text-center" style="background-color:#343A40; color: #FFFFFF;">
+            <strong>TAMBAH DATA</strong>
+        </div>
+        <div class="card-header">
+            <a href="<?= $this->url->get('/pabrik') ?>" class="btn btn-secondary">Kembali</a>
+   
+        </div>
+        <div class="card-body">
+            <form method="post" action="<?= $this->url->get('/pabrik/proses') ?>">
+                <?= $this->flashSession->output() ?>
+                <div class="form-group">
+                    <label>Nama Pabrik</label>
+                    <input type="text" name="nama_pabrik" autocomplete="off" class="form-control" placeholder="Nama pabrik">
+
+                </div>
+                <div class="form-group">
+                    <label>Kode Pabrik</label>
+                    <input type="text" name="kode_pabrik" autocomplete="off" class="form-control" placeholder="Kode Pabrik">
+
+                <div class="form-group">
+                    <label>Harga pasir</label>
+                    <input type="text" name="harga_pasir" class="form-control" placeholder="Harga Pasir" autocomplete="off">
+                </div>
+
+                <div class="form-group">
+                    <input type="submit" class="btn btn-success" value="Simpan">
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+</div>
+
         </div>
         <aside class="control-sidebar control-sidebar-dark">
             <!-- Control sidebar content goes here -->
@@ -111,4 +147,4 @@ a:5:{i:0;s:764:"<!DOCTYPE html>
 
 </body>
 
-</html>";}
+</html>
