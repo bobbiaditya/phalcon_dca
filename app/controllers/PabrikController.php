@@ -32,26 +32,42 @@ class PabrikController extends ControllerBase
         }
         else
         {
-            $pab = new Pabrik();
-            $pab->assign(
-                $this->request->getPost(),
-                [
-                    'nama_pabrik',
-                    'kode_pabrik',
-                    'harga_pasir'
-                ]
-            );
-            $pab->updated_at = date('Y-m-d h:i:sa');
-            $pab->created_at = date('Y-m-d h:i:sa');
-    
-            $success = $pab->save();
+            $nama_pabrik = $this->request->getPost('nama_pabrik', 'string');
+            $kode_pabrik = $this->request->getPost('kode_pabrik', 'string');
+            $checkNamaPabrik = Pabrik::findFirst("nama_pabrik = '$nama_pabrik'");
+            $checkKodePabrik = Pabrik::findFirst("kode_pabrik = '$kode_pabrik'");
 
-            if($success)
-            {
-                $this->flashSession->error('Input data berhasil');
+            if($checkNamaPabrik){
+                $this->flashSession->error('Nama Pabrik sudah dipakai');
+                $this->response->redirect('/pabrik/tambah');
             }
+            elseif($checkKodePabrik){
+                $this->flashSession->error('Kode Pabrik sudah dipakai');
+                $this->response->redirect('/pabrik/tambah');
+            }
+            else
+            {
+                $pab = new Pabrik();
+                $pab->assign(
+                    $this->request->getPost(),
+                    [
+                        'nama_pabrik',
+                        'kode_pabrik',
+                        'harga_pasir'
+                    ]
+                );
+                $pab->updated_at = date('Y-m-d h:i:sa');
+                $pab->created_at = date('Y-m-d h:i:sa');
+        
+                $success = $pab->save();
     
-            $this->response->redirect('/pabrik');
+                if($success)
+                {
+                    $this->flashSession->error('Input data berhasil');
+                }
+        
+                $this->response->redirect('/pabrik');
+            }
         }
 
 
@@ -73,29 +89,49 @@ class PabrikController extends ControllerBase
             {
                 $this->flashSession->error($message->getMessage());
             }
-            $this->response->redirect('/pabrik/tambah');
+            $this->response->redirect('/pabrik/edit');
         }
         else
         {
             $pab = Pabrik::findFirstById_pabrik($id);
-
-            $pab->assign(
-                $this->request->getPost(),
-                [
-                    'nama_pabrik',
-                    'kode_pabrik',
-                    'harga_pasir'
-                ]
-            );
-            $pab->updated_at = date('Y-m-d h:i:sa');
-            
-    
-            $success = $pab->save();
-            if($success)
+            $nama_pabrik = $this->request->getPost('nama_pabrik', 'string');
+            $kode_pabrik = $this->request->getPost('kode_pabrik', 'string');
+            if($pab->kode_pabrik != $nama_pabrik)
             {
-                $this->flashSession->error('Update data berhasil');
+                $checkNamaPabrik = Pabrik::findFirst("nama_pabrik = '$nama_pabrik'");
+                if($checkNamaPabrik){
+                    $this->flashSession->error('Nama Pabrik sudah dipakai');
+                    $this->response->redirect('/pabrik/edit/'.$id);
+                }
             }
-            $this->response->redirect('/pabrik');
+            else if($pab->kode_pabrik != $kode_pabrik)
+            {
+                $checkKodePabrik = Pabrik::findFirst("kode_pabrik = '$kode_pabrik'");
+                if($checkKodePabrik){
+                    $this->flashSession->error('Kode Pabrik sudah dipakai');
+                    $this->response->redirect('/pabrik/edit/'.$id);
+                }
+            }
+            else{
+                $pab->assign(
+                    $this->request->getPost(),
+                    [
+                        'nama_pabrik',
+                        'kode_pabrik',
+                        'harga_pasir'
+                    ]
+                );
+                $pab->updated_at = date('Y-m-d h:i:sa');
+                
+        
+                $success = $pab->save();
+                if($success)
+                {
+                    $this->flashSession->error('Update data berhasil');
+                }
+                $this->response->redirect('/pabrik');
+            }
+            
         }
     }
 

@@ -33,22 +33,31 @@ class PemilikTrukController extends ControllerBase
         else
         {
             $pem = new PemilikTruk();
-            $pem->assign(
-                $this->request->getPost(),
-                [
-                    'nama_pemilik',
-                ]
-            );
-            $pem->updated_at = date('Y-m-d h:i:sa');
-            $pem->created_at = date('Y-m-d h:i:sa');
-    
-            $success = $pem->save();
-
-            if($success)
-            {
-                $this->flashSession->error('Input data berhasil');
+            $nama_pemilik = $this->request->getPost('nama_pemilik', 'string');
+            $checkNamaPemilik = PemilikTruk::findFirst("nama_pemilik = '$nama_pemilik'");
+            if($checkNamaPemilik){
+                $this->flashSession->error('Nama sudah dipakai');
+                $this->response->redirect('/pemiliktruk/tambah');
             }
-            $this->response->redirect('/pemiliktruk');
+            else
+            {
+                $pem->assign(
+                    $this->request->getPost(),
+                    [
+                        'nama_pemilik',
+                    ]
+                );
+                $pem->updated_at = date('Y-m-d h:i:sa');
+                $pem->created_at = date('Y-m-d h:i:sa');
+        
+                $success = $pem->save();
+    
+                if($success)
+                {
+                    $this->flashSession->error('Input data berhasil');
+                }
+                $this->response->redirect('/pemiliktruk');
+            }
         }
 
     }
@@ -74,22 +83,34 @@ class PemilikTrukController extends ControllerBase
         else
         {
             $pem = PemilikTruk::findFirstById_pemilik($id);
-            $pem->assign(
-                $this->request->getPost(),
-                [
-                    'nama_pemilik',
-                ]
-            );
-            $pem->updated_at = date('Y-m-d h:i:sa');
-            
-            $success = $pem->save();
-            
-            if($success)
+            $nama_pemilik = $this->request->getPost('nama_pemilik', 'string');
+            $checkNamaPemilik = PemilikTruk::findFirst("nama_pemilik = '$nama_pemilik'");
+            if($pem->nama_pemilik != $nama_pemilik)
             {
-                $this->flashSession->error('Edit data berhasil');
+                if($checkNamaPemilik){
+                    $this->flashSession->error('Nama sudah dipakai');
+                    $this->response->redirect('/pemiliktruk/edit/'.$id);
+                }
             }
-    
-            $this->response->redirect('/pemiliktruk');
+            else
+            {
+                $pem->assign(
+                    $this->request->getPost(),
+                    [
+                        'nama_pemilik',
+                    ]
+                );
+                $pem->updated_at = date('Y-m-d h:i:sa');
+                
+                $success = $pem->save();
+                
+                if($success)
+                {
+                    $this->flashSession->error('Edit data berhasil');
+                }
+        
+                $this->response->redirect('/pemiliktruk');
+            }
         }
     }
 

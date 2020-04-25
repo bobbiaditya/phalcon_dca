@@ -3,7 +3,8 @@
 namespace App\Models;
 
 use Phalcon\Mvc\Model;
-
+use Phalcon\Validation;
+use Phalcon\Validation\Validator\Uniqueness;
 class Pabrik extends Model
 {
     public $id_pabrik;

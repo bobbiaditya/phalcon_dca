@@ -34,25 +34,31 @@ class SupirTrukController extends ControllerBase
         else
         {
             $sup = new SupirTruk();
-    
-            $sup->assign(
-                $this->request->getPost(),
-                [
-                    'id_pemilik',
-                    'nama_supir',
-                    'nopol'
-                ]
-            );
-            $sup->updated_at = date('Y-m-d h:i:sa');
-            $sup->created_at = date('Y-m-d h:i:sa');
-    
-            $success = $sup->save();
-            if($success)
-            {
-                $this->flashSession->error('Input data berhasil');
+            $nama_supir = $this->request->getPost('nama_supir', 'string');
+            $checkNamaSupir = SupirTruk::findFirst("nama_supir = '$nama_supir'");
+            if($checkNamaSupir){
+                $this->flashSession->error('Nama Supir sudah dipakai');
+                $this->response->redirect('/supirtruk/tambah');
             }
-    
-            $this->response->redirect('/supirtruk');
+            else
+            {
+                $sup->assign(
+                    $this->request->getPost(),
+                    [
+                        'id_pemilik',
+                        'nama_supir',
+                        'nopol'
+                    ]
+                );
+                $sup->updated_at = date('Y-m-d h:i:sa');
+                $sup->created_at = date('Y-m-d h:i:sa');
+                $success = $sup->save();
+                if($success)
+                {
+                    $this->flashSession->error('Input data berhasil');
+                }
+                $this->response->redirect('/supirtruk');
+            }
         }
     }
 
@@ -85,25 +91,36 @@ class SupirTrukController extends ControllerBase
         else
         {
             $sup = SupirTruk::findFirstById_supir($id);
-    
-            $sup->assign(
-                $this->request->getPost(),
-                [
-                    'id_pemilik',
-                    'nama_supir',
-                    'nopol'
-                ]
-            );
-            $sup->updated_at = date('Y-m-d h:i:sa');
-            
-    
-            $success = $sup->save();
-            if($success)
+            $nama_supir = $this->request->getPost('nama_supir', 'string');
+            $checkNamaSupir = SupirTruk::findFirst("nama_supir = '$nama_supir'");
+            if($sup->nama_supir != $nama_supir)
             {
-                $this->flashSession->error('Edit data berhasil');
+                if($checkNamaSupir){
+                    $this->flashSession->error('Nama Supir sudah dipakai');
+                    $this->response->redirect('/supirtruk/edit/'.$id);
+                }
             }
-    
-            $this->response->redirect('/supirtruk');
+            else
+            {
+                $sup->assign(
+                    $this->request->getPost(),
+                    [
+                        'id_pemilik',
+                        'nama_supir',
+                        'nopol'
+                    ]
+                );
+                $sup->updated_at = date('Y-m-d h:i:sa');
+                
+        
+                $success = $sup->save();
+                if($success)
+                {
+                    $this->flashSession->error('Edit data berhasil');
+                }
+        
+                $this->response->redirect('/supirtruk');
+            }
         }
     }
 
