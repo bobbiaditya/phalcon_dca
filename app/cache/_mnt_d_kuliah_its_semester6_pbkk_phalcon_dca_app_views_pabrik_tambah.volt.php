@@ -118,44 +118,40 @@
         </aside>
         <div class="content-wrapper">
             
-
-</head>
 <div class="container">
-    <div class="card">
+    <div class="card mt-5">
         <div class="card-header text-center" style="background-color:#343A40; color: #FFFFFF;">
-            <strong>PABRIK</strong>
+            <strong>TAMBAH DATA</strong>
         </div>
         <div class="card-header">
-            <a href="<?= $this->url->get('pabrik/tambah') ?>" class="btn btn-primary btn-sm float-left"><span class="fas fa-plus"
-                    style="padding-right: 7px;"></span>Input</a>
+            <a href="<?= $this->url->get('/pabrik') ?>" class="btn btn-secondary">Kembali</a>
+   
         </div>
-        <div class="card-header text-success text-center">
+        <div class="card-header text-danger text-center">
             <?= $this->flashSession->output() ?>
         </div>
-        <div class="card-body table-responsive p-0" style="height: 500px;">
-            <table class="table table-bordered table-hover table-striped table-head-fixed">
-                <thead>
-                    <tr>
-                        <th>Nama Pabrik</th>
-                        <th>Kode Pabrik</th>
-                        <th>Harga Pasir</th>
-                        <th>OPSI</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php foreach ($pabriks as $p) { ?>
-                    <tr>
-                        <td><?= $p->nama_pabrik ?></td>
-                        <td><?= $p->kode_pabrik ?></td>
-                        <td><?= $p->harga_pasir ?></td>
-                        <td>
-                            <a href="<?= $this->url->get('pabrik/edit/' . $p->id_pabrik) ?>" class="btn btn-warning btn-sm">Edit</a>
-                            <a href="<?= $this->url->get('pabrik/hapus/' . $p->id_pabrik) ?>" class="btn btn-danger btn-sm">Hapus</a>
-                        </td>
-                    </tr>
-                    <?php } ?>
-                </tbody>
-            </table>
+        <div class="card-body">
+            <form method="post" action="<?= $this->url->get('/pabrik/proses') ?>">
+                <div class="form-group">
+                    <label>Nama Pabrik</label>
+                    <input type="text" name="nama_pabrik" autocomplete="off" class="form-control" placeholder="Nama pabrik">
+
+                </div>
+                <div class="form-group">
+                    <label>Kode Pabrik</label>
+                    <input type="text" name="kode_pabrik" autocomplete="off" class="form-control" placeholder="Kode Pabrik">
+
+                <div class="form-group">
+                    <label>Harga pasir</label>
+                    <input type="text" name="harga_pasir" class="form-control" placeholder="Harga Pasir" autocomplete="off">
+                </div>
+
+                <div class="form-group">
+                    <input type="submit" class="btn btn-success" value="Simpan">
+                </div>
+
+            </form>
+
         </div>
     </div>
 </div>

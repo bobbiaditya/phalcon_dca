@@ -21,7 +21,7 @@
     </style>
 </head>
 
-<title>User</title>
+<title>Pemilik Truk</title>
 
 
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed" style="font-size: 21px;">
@@ -36,26 +36,34 @@
                 </li>
             </ul>
             <!-- Right navbar links -->
+            <!-- Right navbar links -->
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a href="<?= $this->url->get('user') ?>" class="nav-link"><?= $this->session->get('auth')['username'] ?></a>
-                </li>
-                <li class="nav-item">
-                    <a  href="<?= $this->url->get('session/logout') ?>" class="nav-link">Logout</a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-4" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false" href="#">
+                        <i class="fas fa-user"></i>&nbsp;&nbsp;<?= $this->session->get('auth')['username'] ?>&nbsp;</a>
+                    <div class="dropdown-menu dropdown-menu-right dropdown-info"
+                        aria-labelledby="navbarDropdownMenuLink-4">
+                        <a class="dropdown-item" href="<?= $this->url->get('user') ?>">List User</a>
+                        <a class="dropdown-item" href="<?= $this->url->get('session/logout') ?>">Log out</a>
+                    </div>
                 </li>
             </ul>
         </nav>
         <!-- Main Sidebar Container -->
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
-            <span class="font-weight-bold brand-link" style="color:#343A40; text-align: center; background:#7CB1A6;">DCA
+            <span class="font-weight-bold brand-link" style="color:#343A40; background:#7CB1A6; padding-left: 13px;">
+                <?= $this->tag->image(['img/DCA.png', 'class' => 'brand-image img-circle elevation-3', 'style' => 'opacity: .8']) ?>
+                <span class="brand-text font-weight-bold" style="padding-left: 15%;">DCA</span>
             </span>
             <!-- Sidebar -->
             <div class="sidebar">
                 <nav class="mt-2">
-                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                      <li class="nav-item has-treeview">
-                        <a href="#" class="nav-link">
+                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
+                        data-accordion="false">
+                        <li class="nav-item has-treeview">
+                            <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-clipboard"></i>
                                 <p>
                                     Pendaftaran
@@ -101,7 +109,7 @@
                                 </li>
                             </ul>
                         </li>
-                        
+
 
 
                     </ul>
@@ -110,40 +118,29 @@
         </aside>
         <div class="content-wrapper">
             
-
 <div class="container">
-    <div class="card">
+    <div class="card mt-5">
         <div class="card-header text-center" style="background-color:#343A40; color: #FFFFFF;">
-            <strong>List User</strong>
-        </div>
-        <div class="card-header text-success text-center">
-            <?= $this->flashSession->output() ?>
+            <strong>TAMBAH DATA</strong>
         </div>
         <div class="card-header">
-            <a href="<?= $this->url->get('/user/tambah') ?>" class="btn btn-primary btn-sm float-left"><span class="fas fa-plus" style="padding-right: 7px;"></span>Input</a>
+            <a href="<?= $this->url->get('/pemiliktruk') ?>" class="btn btn-secondary">Kembali</a>
         </div>
-        <div class="card-body table-responsive p-0" style="height: 500px;">
-            <table class="table table-bordered table-hover table-striped table-head-fixed">
-                <thead>
-                    <tr>
-                        <th>Nama User</th>
-                        <th>Tipe User</th>
-                        <th>OPSI</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php foreach ($users as $p) { ?>
-                    <tr>
-                        <td><?= $p->username ?></td>
-                        <td><?= $p->tipe ?></td>
-                        <td>
-                            <a href="<?= $this->url->get('user/edit/' . $p->id_user) ?>" class="btn btn-warning btn-sm">Edit</a>
-                            <a href="<?= $this->url->get('user/hapus/' . $p->id_user) ?>" class="btn btn-danger btn-sm">Hapus</a>
-                        </td>
-                    </tr>
-                    <?php } ?>
-                </tbody>
-            </table>
+        <div class="card-header text-danger text-center">
+            <?= $this->flashSession->output() ?>
+        </div>
+        <div class="card-body">
+            <form method="post" action="<?= $this->url->get('/pemiliktruk/proses') ?>">
+                <div class="form-group">
+                    <label>Nama Pemilik Truk</label>
+                    <input type="text" name="nama_pemilik" autocomplete="off" class="form-control" placeholder="Nama Pemilik Truk">
+
+                <div class="form-group">
+                    <input type="submit" class="btn btn-success" value="Simpan">
+                </div>
+
+            </form>
+
         </div>
     </div>
 </div>

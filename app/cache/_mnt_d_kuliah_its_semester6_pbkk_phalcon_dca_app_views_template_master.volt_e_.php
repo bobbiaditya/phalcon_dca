@@ -21,7 +21,7 @@ a:5:{i:0;s:764:"<!DOCTYPE html>
     </style>
 </head>
 ";s:5:"title";a:1:{i:0;a:4:{s:4:"type";i:357;s:5:"value";s:2:"
-";s:4:"file";s:75:"/mnt/d/Kuliah/ITS/Semester6/PBKK/phalcon_dca/app/views/template/master.volt";s:4:"line";i:24;}}i:1;s:4444:"
+";s:4:"file";s:75:"/mnt/d/Kuliah/ITS/Semester6/PBKK/phalcon_dca/app/views/template/master.volt";s:4:"line";i:24;}}i:1;s:5136:"
 
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed" style="font-size: 21px;">
     <!-- Site wrapper -->
@@ -35,26 +35,34 @@ a:5:{i:0;s:764:"<!DOCTYPE html>
                 </li>
             </ul>
             <!-- Right navbar links -->
+            <!-- Right navbar links -->
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a href="<?= $this->url->get('user') ?>" class="nav-link"><?= $this->session->get('auth')['username'] ?></a>
-                </li>
-                <li class="nav-item">
-                    <a  href="<?= $this->url->get('session/logout') ?>" class="nav-link">Logout</a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-4" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false" href="#">
+                        <i class="fas fa-user"></i>&nbsp;&nbsp;<?= $this->session->get('auth')['username'] ?>&nbsp;</a>
+                    <div class="dropdown-menu dropdown-menu-right dropdown-info"
+                        aria-labelledby="navbarDropdownMenuLink-4">
+                        <a class="dropdown-item" href="<?= $this->url->get('user') ?>">List User</a>
+                        <a class="dropdown-item" href="<?= $this->url->get('session/logout') ?>">Log out</a>
+                    </div>
                 </li>
             </ul>
         </nav>
         <!-- Main Sidebar Container -->
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
-            <span class="font-weight-bold brand-link" style="color:#343A40; text-align: center; background:#7CB1A6;">DCA
+            <span class="font-weight-bold brand-link" style="color:#343A40; background:#7CB1A6; padding-left: 13px;">
+                <?= $this->tag->image(['img/DCA.png', 'class' => 'brand-image img-circle elevation-3', 'style' => 'opacity: .8']) ?>
+                <span class="brand-text font-weight-bold" style="padding-left: 15%;">DCA</span>
             </span>
             <!-- Sidebar -->
             <div class="sidebar">
                 <nav class="mt-2">
-                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                      <li class="nav-item has-treeview">
-                        <a href="#" class="nav-link">
+                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
+                        data-accordion="false">
+                        <li class="nav-item has-treeview">
+                            <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-clipboard"></i>
                                 <p>
                                     Pendaftaran
@@ -100,7 +108,7 @@ a:5:{i:0;s:764:"<!DOCTYPE html>
                                 </li>
                             </ul>
                         </li>
-                        
+
 
 
                     </ul>
@@ -109,7 +117,7 @@ a:5:{i:0;s:764:"<!DOCTYPE html>
         </aside>
         <div class="content-wrapper">
             ";s:7:"content";a:1:{i:0;a:4:{s:4:"type";i:357;s:5:"value";s:14:"
-            ";s:4:"file";s:75:"/mnt/d/Kuliah/ITS/Semester6/PBKK/phalcon_dca/app/views/template/master.volt";s:4:"line";i:112;}}i:2;s:241:"
+            ";s:4:"file";s:75:"/mnt/d/Kuliah/ITS/Semester6/PBKK/phalcon_dca/app/views/template/master.volt";s:4:"line";i:120;}}i:2;s:241:"
         </div>
         <aside class="control-sidebar control-sidebar-dark">
             <!-- Control sidebar content goes here -->
