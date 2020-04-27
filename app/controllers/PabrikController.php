@@ -96,7 +96,7 @@ class PabrikController extends ControllerBase
             $pab = Pabrik::findFirstById_pabrik($id);
             $nama_pabrik = $this->request->getPost('nama_pabrik', 'string');
             $kode_pabrik = $this->request->getPost('kode_pabrik', 'string');
-            if($pab->kode_pabrik != $nama_pabrik)
+            if($pab->nama_pabrik != $nama_pabrik)
             {
                 $checkNamaPabrik = Pabrik::findFirst("nama_pabrik = '$nama_pabrik'");
                 if($checkNamaPabrik){

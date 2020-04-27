@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace App\Controllers;
 use App\Models\PemilikTruk;
+use App\Models\SupirTruk;
 use App\Validation\PemilikValidation;
 date_default_timezone_set("Asia/Bangkok");
 class PemilikTrukController extends ControllerBase
@@ -117,12 +118,19 @@ class PemilikTrukController extends ControllerBase
     public function hapusAction($id)
     {
         $pem = PemilikTruk::findFirstById_pemilik($id);
-
-        $success = $pem->delete();
-        
-        if($success)
+        $sup = SupirTruk::findFirstById_pemilik($id);
+        if($sup)
         {
-            $this->flashSession->success('Delete data berhasil');
+            $this->flashSession->error('Delete data gagal,Pemilik truk masih memiliki supir');
+        }
+        else
+        {
+            $success = $pem->delete();
+            
+            if($success)
+            {
+                $this->flashSession->success('Delete data berhasil');
+            }
         }
         $this->response->redirect('/pemiliktruk');
     }

@@ -23,7 +23,6 @@
 
 <title>Pabrik</title>
 
-
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed" style="font-size: 21px;">
     <!-- Site wrapper -->
     <div class="wrapper">
@@ -62,6 +61,7 @@
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                         data-accordion="false">
+                        <?php if ($this->session->get('auth')['username'] === 'master') { ?>
                         <li class="nav-item has-treeview">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-clipboard"></i>
@@ -98,20 +98,10 @@
                                         </p>
                                     </a>
                                 </li>
-                                <li class="nav-item">
-                                    <a href="<?= $this->url->get('user') ?>" class="nav-link">
-                                        <!-- <i class="nav-icon fas fa-warehouse"></i> -->
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>
-                                            User
-                                        </p>
-                                    </a>
-                                </li>
                             </ul>
                         </li>
-
-
-
+                        <?php } else { ?>
+                        <?php } ?>
                     </ul>
                 </nav>
             </div>
@@ -168,5 +158,6 @@
         <?= $this->assets->outputJs() ?>
 
 </body>
+
 
 </html>

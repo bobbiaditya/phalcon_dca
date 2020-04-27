@@ -21,8 +21,7 @@ a:5:{i:0;s:764:"<!DOCTYPE html>
     </style>
 </head>
 ";s:5:"title";a:1:{i:0;a:4:{s:4:"type";i:357;s:5:"value";s:2:"
-";s:4:"file";s:75:"/mnt/d/Kuliah/ITS/Semester6/PBKK/phalcon_dca/app/views/template/master.volt";s:4:"line";i:24;}}i:1;s:5136:"
-
+";s:4:"file";s:75:"/mnt/d/Kuliah/ITS/Semester6/PBKK/phalcon_dca/app/views/template/master.volt";s:4:"line";i:24;}}i:1;s:4756:"
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed" style="font-size: 21px;">
     <!-- Site wrapper -->
     <div class="wrapper">
@@ -61,6 +60,7 @@ a:5:{i:0;s:764:"<!DOCTYPE html>
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                         data-accordion="false">
+                        <?php if ($this->session->get('auth')['username'] === 'master') { ?>
                         <li class="nav-item has-treeview">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-clipboard"></i>
@@ -97,27 +97,17 @@ a:5:{i:0;s:764:"<!DOCTYPE html>
                                         </p>
                                     </a>
                                 </li>
-                                <li class="nav-item">
-                                    <a href="<?= $this->url->get('user') ?>" class="nav-link">
-                                        <!-- <i class="nav-icon fas fa-warehouse"></i> -->
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>
-                                            User
-                                        </p>
-                                    </a>
-                                </li>
                             </ul>
                         </li>
-
-
-
+                        <?php } else { ?>
+                        <?php } ?>
                     </ul>
                 </nav>
             </div>
         </aside>
         <div class="content-wrapper">
             ";s:7:"content";a:1:{i:0;a:4:{s:4:"type";i:357;s:5:"value";s:14:"
-            ";s:4:"file";s:75:"/mnt/d/Kuliah/ITS/Semester6/PBKK/phalcon_dca/app/views/template/master.volt";s:4:"line";i:120;}}i:2;s:241:"
+            ";s:4:"file";s:75:"/mnt/d/Kuliah/ITS/Semester6/PBKK/phalcon_dca/app/views/template/master.volt";s:4:"line";i:110;}}i:2;s:243:"
         </div>
         <aside class="control-sidebar control-sidebar-dark">
             <!-- Control sidebar content goes here -->
@@ -126,5 +116,6 @@ a:5:{i:0;s:764:"<!DOCTYPE html>
         <?= $this->assets->outputJs() ?>
 
 </body>
+
 
 </html>";}

@@ -30,7 +30,6 @@
                         <td>{{p.username}}</td>
                         <td>{{p.tipe}}</td>
                         <td>
-                            <a href="{{url('user/edit/'~p.id_user) }}" class="btn btn-warning btn-sm">Edit</a>
                             <a href="{{url('user/hapus/'~p.id_user) }}" class="btn btn-danger btn-sm">Hapus</a>
                         </td>
                     </tr>

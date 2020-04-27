@@ -40,3 +40,6 @@ CREATE TABLE supir_truk (
   updated_at datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   created_at datetime NOT NULL DEFAULT '0000-00-00 00:00:00'
 )
+
+ALTER TABLE users
+  ADD PRIMARY KEY (id_user);

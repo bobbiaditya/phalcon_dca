@@ -14,7 +14,9 @@
         <form method="post" autocomplete="off" action="{{url('session/login')}}">
             <div class="signup">
                 <h2 class="form-title" id="signup">Log in</h2>
-                {{ flashSession.output() }}
+                <div class="text-danger text-center">
+                    {{ flashSession.output() }}
+                </div>
                 <div class="form-holder">
                     <input id="username" type="text" placeholder="Username" class="input form-control" name="username">
 

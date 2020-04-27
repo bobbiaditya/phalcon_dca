@@ -16,5 +16,10 @@ class ErrorController extends ControllerBase
         echo 'Server Error';
     }
 
+    public function unauthorizedAction()
+    {
+        echo 'Tidak punya hak ases. Error!';
+    }
+
 }
 

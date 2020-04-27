@@ -62,5 +62,16 @@ class UserController extends ControllerBase
             }
         }
     }
+    public function hapusAction($id)
+    {
+        $user = Users::findFirstById_user($id);
+
+        $success = $user->delete();
+        if($success)
+        {
+            $this->flashSession->success('Delete data berhasil');
+        }
+        $this->response->redirect('/user');
+    }
 }
 

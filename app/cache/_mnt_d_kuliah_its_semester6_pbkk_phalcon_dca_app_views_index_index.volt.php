@@ -14,7 +14,9 @@
         <form method="post" autocomplete="off" action="<?= $this->url->get('session/login') ?>">
             <div class="signup">
                 <h2 class="form-title" id="signup">Log in</h2>
-                <?= $this->flashSession->output() ?>
+                <div class="text-danger text-center">
+                    <?= $this->flashSession->output() ?>
+                </div>
                 <div class="form-holder">
                     <input id="username" type="text" placeholder="Username" class="input form-control" name="username">
 
