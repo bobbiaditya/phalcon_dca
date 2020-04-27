@@ -48,7 +48,7 @@ class SessionController extends ControllerBase
                             'status' => '1',
                         ]
                     );
-                    $this->response->redirect('/pabrik');
+                    $this->response->redirect('/user/master');
                 } else if ($user->tipe == 'admin') {
                     // Set a session
                     $this->session->set(
@@ -61,7 +61,7 @@ class SessionController extends ControllerBase
                             'status' => '1',
                         ]
                     );
-                    $this->response->redirect('/user');
+                    $this->response->redirect('/user/admin');
                 }
             } else {
                 $this->flashSession->error('Password Salah');

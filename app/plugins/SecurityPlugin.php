@@ -103,7 +103,7 @@ class SecurityPlugin extends Injectable
             'supirtruk'    => ['index', 'tambah', 'proses', 'edit', 'update', 'hapus'],
             'pabrik'     => ['index', 'tambah', 'proses', 'edit', 'update', 'hapus'],
             'pemiliktruk'     => ['index', 'tambah', 'proses', 'edit', 'update', 'hapus'],
-            'user' => ['index', 'tambah', 'proses', 'hapus'],
+            'user' => ['index', 'tambah', 'proses', 'hapus','master'],
         ];
         foreach ($privateResources as $resource => $actions) {
             $acl->addComponent(new Component($resource), $actions);
@@ -114,6 +114,8 @@ class SecurityPlugin extends Injectable
             'index'                 => ['index'],
             'error'                 => ['notFound', 'serverError', 'unauthorized'],
             'session'               => ['index', 'login', 'logout'],
+            'user'                  => ['admin'],
+
         ];
         foreach ($publicResources as $resource => $actions) {
             $acl->addComponent(new Component($resource), $actions);

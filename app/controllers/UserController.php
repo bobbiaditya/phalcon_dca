@@ -14,6 +14,14 @@ class UserController extends ControllerBase
     {
         $this->view->users = Users::find();
     }
+    public function masterAction()
+    {
+
+    }
+    public function adminAction()
+    {
+        
+    }
     public function tambahAction()
     {
         
