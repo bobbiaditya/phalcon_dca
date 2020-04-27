@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>DCA | Dwi Citra Anugerah</title>
+    <!-- {{ assets.outputCss() }} -->
+    <link rel="stylesheet" href="{{ static_url('dist/css/adminlte.min.css') }}" type='text/css'>
     <link rel="stylesheet" href="{{ static_url('css/login.css') }}" type='text/css'>
 </head>
 

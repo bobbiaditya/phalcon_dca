@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>DCA | Dwi Citra Anugerah</title>
+    <!-- <?= $this->assets->outputCss() ?> -->
+    <link rel="stylesheet" href="<?= $this->url->getStatic('dist/css/adminlte.min.css') ?>" type='text/css'>
     <link rel="stylesheet" href="<?= $this->url->getStatic('css/login.css') ?>" type='text/css'>
 </head>
 
