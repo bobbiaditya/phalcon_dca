@@ -21,7 +21,7 @@ a:5:{i:0;s:764:"<!DOCTYPE html>
     </style>
 </head>
 ";s:5:"title";a:1:{i:0;a:4:{s:4:"type";i:357;s:5:"value";s:2:"
-";s:4:"file";s:75:"/mnt/d/Kuliah/ITS/Semester6/PBKK/phalcon_dca/app/views/template/master.volt";s:4:"line";i:24;}}i:1;s:5243:"
+";s:4:"file";s:75:"/mnt/d/Kuliah/ITS/Semester6/PBKK/phalcon_dca/app/views/template/master.volt";s:4:"line";i:24;}}i:1;s:5373:"
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed" style="font-size: 21px;">
     <!-- Site wrapper -->
     <div class="wrapper">
@@ -42,7 +42,9 @@ a:5:{i:0;s:764:"<!DOCTYPE html>
                         <i class="fas fa-user"></i>&nbsp;&nbsp;<?= $this->session->get('auth')['username'] ?>&nbsp;</a>
                     <div class="dropdown-menu dropdown-menu-right dropdown-info"
                         aria-labelledby="navbarDropdownMenuLink-4">
+                        <?php if ($this->session->get('auth')['username'] === 'master') { ?>
                         <a class="dropdown-item" href="<?= $this->url->get('user') ?>">List User</a>
+                        <?php } ?>
                         <a class="dropdown-item" href="<?= $this->url->get('session/logout') ?>">Log out</a>
                     </div>
                 </li>
@@ -117,7 +119,7 @@ a:5:{i:0;s:764:"<!DOCTYPE html>
         </aside>
         <div class="content-wrapper">
             ";s:7:"content";a:1:{i:0;a:4:{s:4:"type";i:357;s:5:"value";s:14:"
-            ";s:4:"file";s:75:"/mnt/d/Kuliah/ITS/Semester6/PBKK/phalcon_dca/app/views/template/master.volt";s:4:"line";i:120;}}i:2;s:243:"
+            ";s:4:"file";s:75:"/mnt/d/Kuliah/ITS/Semester6/PBKK/phalcon_dca/app/views/template/master.volt";s:4:"line";i:122;}}i:2;s:243:"
         </div>
         <aside class="control-sidebar control-sidebar-dark">
             <!-- Control sidebar content goes here -->

@@ -43,7 +43,9 @@
                         <i class="fas fa-user"></i>&nbsp;&nbsp;<?= $this->session->get('auth')['username'] ?>&nbsp;</a>
                     <div class="dropdown-menu dropdown-menu-right dropdown-info"
                         aria-labelledby="navbarDropdownMenuLink-4">
+                        <?php if ($this->session->get('auth')['username'] === 'master') { ?>
                         <a class="dropdown-item" href="<?= $this->url->get('user') ?>">List User</a>
+                        <?php } ?>
                         <a class="dropdown-item" href="<?= $this->url->get('session/logout') ?>">Log out</a>
                     </div>
                 </li>

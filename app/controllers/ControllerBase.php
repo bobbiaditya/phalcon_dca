@@ -26,11 +26,11 @@ class ControllerBase extends Controller
     }
 
 
-    public function beforeExecuteRoute() {
-        if (!$this->ses) {
-            // $this->view->disable();
-            $this->response->redirect('/');
-            return false;
-        }
-    }
+    // public function beforeExecuteRoute() {
+    //     if (!$this->ses) {
+    //         // $this->view->disable();
+    //         $this->response->redirect('/');
+    //         return false;
+    //     }
+    // }
 }

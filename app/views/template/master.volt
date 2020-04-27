@@ -42,7 +42,9 @@
                         <i class="fas fa-user"></i>&nbsp;&nbsp;{{ session.get('auth')['username'] }}&nbsp;</a>
                     <div class="dropdown-menu dropdown-menu-right dropdown-info"
                         aria-labelledby="navbarDropdownMenuLink-4">
+                        {% if session.get('auth')['username'] ==='master' %}
                         <a class="dropdown-item" href="{{ url('user') }}">List User</a>
+                        {% endif%}
                         <a class="dropdown-item" href="{{ url('session/logout') }}">Log out</a>
                     </div>
                 </li>

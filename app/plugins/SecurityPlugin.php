@@ -34,8 +34,12 @@ class SecurityPlugin extends Injectable
         $auth = $this->session->get('auth')['tipe'];
         if ($auth == 'master') {
             $role = 'master';
-        } else {
+        } 
+        else if ($auth == 'admin'){
             $role = 'admin';
+        }
+        else{
+            $role = 'umum';
         }
 
         $controller = $dispatcher->getControllerName();
@@ -90,7 +94,11 @@ class SecurityPlugin extends Injectable
             ),
             'admin' => new Role(
                 'admin',
-                ''
+                'Dapat mengakses sebagian sistem'
+            ),
+            'umum' => new Role(
+                'umum',
+                'Tidak memiliki hak akses ke dalam sistem'
             )
         ];
 
@@ -100,10 +108,10 @@ class SecurityPlugin extends Injectable
 
         //Yang gak boleh diakses admin
         $privateResources = [
-            'supirtruk'    => ['index', 'tambah', 'proses', 'edit', 'update', 'hapus'],
-            'pabrik'     => ['index', 'tambah', 'proses', 'edit', 'update', 'hapus'],
-            'pemiliktruk'     => ['index', 'tambah', 'proses', 'edit', 'update', 'hapus'],
-            'user' => ['index', 'tambah', 'proses', 'hapus','master'],
+            'supirtruk'         => ['index', 'tambah', 'proses', 'edit', 'update', 'hapus'],
+            'pabrik'            => ['index', 'tambah', 'proses', 'edit', 'update', 'hapus'],
+            'pemiliktruk'       => ['index', 'tambah', 'proses', 'edit', 'update', 'hapus'],
+            'user'              => ['index', 'tambah', 'proses', 'hapus','master'],
         ];
         foreach ($privateResources as $resource => $actions) {
             $acl->addComponent(new Component($resource), $actions);
@@ -114,10 +122,18 @@ class SecurityPlugin extends Injectable
             'index'                 => ['index'],
             'error'                 => ['notFound', 'serverError', 'unauthorized'],
             'session'               => ['index', 'login', 'logout'],
+        ];
+
+        foreach ($publicResources as $resource => $actions) {
+            $acl->addComponent(new Component($resource), $actions);
+        }
+        
+        // yang boelh diakses admin
+        $adminResources = [
             'user'                  => ['admin'],
 
         ];
-        foreach ($publicResources as $resource => $actions) {
+        foreach ($adminResources as $resource => $actions) {
             $acl->addComponent(new Component($resource), $actions);
         }
 
@@ -136,8 +152,15 @@ class SecurityPlugin extends Injectable
                 $acl->allow('master', $resource, $action);
             }
         }
-
+        //Grant access to private area to role admin
+        foreach ($adminResources as $resource => $actions) {
+                foreach ($actions as $action) {
+                        $acl->allow('admin', $resource, $action);
+                }
+        }
+                
         //The acl is stored in session, APC would be useful here too
+        // $acl->allow('admin', 'user', 'admin');
         $this->persistent->acl = $acl;
 
         return $acl;
