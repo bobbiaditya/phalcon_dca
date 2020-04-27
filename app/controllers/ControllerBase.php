@@ -22,7 +22,6 @@ class ControllerBase extends Controller
         $this->assets->addJs("plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js");
         $this->assets->addJs("dist/js/demo.js");
         $this->assets->addJs("bootstrap-colorpicker/js/bootstrap-colorpicker.min.js");
-        $this->ses = $this->session->has('auth');
     }
 
 

@@ -34,6 +34,7 @@ class SecurityPlugin extends Injectable
         $auth = $this->session->get('auth')['tipe'];
         if ($auth == 'master') {
             $role = 'master';
+
         } 
         else if ($auth == 'admin'){
             $role = 'admin';
@@ -68,6 +69,7 @@ class SecurityPlugin extends Injectable
 
             return false;
         }
+
 
         return true;
     }
