@@ -21,7 +21,7 @@
     </style>
 </head>
 
-<title>User Admin</title>
+<title>Pabrik</title>
 
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed" style="font-size: 21px;">
     <!-- Site wrapper -->
@@ -120,7 +120,48 @@
         </aside>
         <div class="content-wrapper">
             
-            
+
+</head>
+<div class="container">
+    <div class="card">
+        <div class="card-header text-center" style="background-color:#343A40; color: #FFFFFF;">
+            <strong>PABRIK</strong>
+        </div>
+        <div class="card-header">
+            <a href="<?= $this->url->get('pabrik/tambah') ?>" class="btn btn-primary btn-sm float-left"><span class="fas fa-plus"
+                    style="padding-right: 7px;"></span>Input</a>
+        </div>
+        <div class="card-header text-success text-center">
+            <?= $this->flashSession->output() ?>
+        </div>
+        <div class="card-body table-responsive p-0" style="height: 500px;">
+            <table class="table table-bordered table-hover table-striped table-head-fixed">
+                <thead>
+                    <tr>
+                        <th>Nama Pabrik</th>
+                        <th>Kode Pabrik</th>
+                        <th>Harga Pasir</th>
+                        <th>OPSI</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($pabriks as $p) { ?>
+                    <tr>
+                        <td><?= $p->nama_pabrik ?></td>
+                        <td><?= $p->kode_pabrik ?></td>
+                        <td><?= $p->harga_pasir ?></td>
+                        <td>
+                            <a href="<?= $this->url->get('pabrik/edit/' . $p->id_pabrik) ?>" class="btn btn-warning btn-sm">Edit</a>
+                            <a href="<?= $this->url->get('pabrik/hapus/' . $p->id_pabrik) ?>" class="btn btn-danger btn-sm">Hapus</a>
+                        </td>
+                    </tr>
+                    <?php } ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
         </div>
         <aside class="control-sidebar control-sidebar-dark">
             <!-- Control sidebar content goes here -->
