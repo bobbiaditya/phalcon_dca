@@ -113,7 +113,7 @@ class SecurityPlugin extends Injectable
             'supirtruk'         => ['index', 'tambah', 'proses', 'edit', 'update', 'hapus'],
             'pabrik'            => ['index', 'tambah', 'proses', 'edit', 'update', 'hapus'],
             'pemiliktruk'       => ['index', 'tambah', 'proses', 'edit', 'update', 'hapus'],
-            'user'              => ['index', 'tambah', 'proses', 'hapus','master'],
+            'user'              => ['index', 'tambah', 'hapus','master','register'],
         ];
         foreach ($privateResources as $resource => $actions) {
             $acl->addComponent(new Component($resource), $actions);

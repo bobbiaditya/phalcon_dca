@@ -21,7 +21,7 @@ a:5:{i:0;s:764:"<!DOCTYPE html>
     </style>
 </head>
 ";s:5:"title";a:1:{i:0;a:4:{s:4:"type";i:357;s:5:"value";s:2:"
-";s:4:"file";s:75:"/mnt/d/Kuliah/ITS/Semester6/PBKK/phalcon_dca/app/views/template/master.volt";s:4:"line";i:24;}}i:1;s:5373:"
+";s:4:"file";s:75:"/mnt/d/Kuliah/ITS/Semester6/PBKK/phalcon_dca/app/views/template/master.volt";s:4:"line";i:24;}}i:1;s:5369:"
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed" style="font-size: 21px;">
     <!-- Site wrapper -->
     <div class="wrapper">
@@ -62,7 +62,7 @@ a:5:{i:0;s:764:"<!DOCTYPE html>
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                         data-accordion="false">
-                        <?php if ($this->session->get('auth')['username'] === 'master') { ?>
+                        <?php if ($this->session->get('auth')['tipe'] === 'master') { ?>
                         <li class="nav-item has-treeview">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-clipboard"></i>
